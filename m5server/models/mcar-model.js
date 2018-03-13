@@ -7,7 +7,7 @@ const MCarSchema = new Schema({
         required: [true, "modelM required"]
      },
     year: {
-        type: String,
+        type: Number,
         required: true
     },
     posts: Array,
