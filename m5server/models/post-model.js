@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const DiscussionSchema = require('./discussion-model').schema;
+const DiscussionSchema = require('./discussion-model').Schema;
 
 const PostSchema = new Schema({
 		title: {

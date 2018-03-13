@@ -2,11 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const MCarSchema = new Schema({
+     modelM: {
+        type: String,
+        required: [true, "modelM required"]
+     },
     year: {
         type: String,
         required: true
     },
-    modelM: String,
     posts: Array,
     specs: Array,
     image: {
