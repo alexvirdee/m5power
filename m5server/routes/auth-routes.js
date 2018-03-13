@@ -101,7 +101,8 @@ authRoutes.get("/api/checklogin", (req, res, next) => {
     return;
   }
 
-
+res.status(401).json({ message: "Unauthorized." });
+});
 
 
 module.exports = authRoutes;
