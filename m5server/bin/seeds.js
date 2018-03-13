@@ -1,4 +1,4 @@
-// seed database
+// seed database with BMW M Cars
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/M5power');
 const MCar = require('../models/mcar-model');

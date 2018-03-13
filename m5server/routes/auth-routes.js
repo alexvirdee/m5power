@@ -56,4 +56,52 @@ authRoutes.post('/signup', (req, res, next) => {
 });
 
 
+authRoutes.post('/api/login', (req, res, next) => {
+    const authenticateFunction = passport.authenticate('local', (err, theUser, failureDetails) => {
+
+        if(err){
+            re.status(500).json({message: "Unknown error just happened while login."});
+            return;
+        }
+        if (!theUser) {
+          // "failureDetails" contains the error messages
+          // from our logic in "LocalStrategy" { message: '...' }.
+          res.status(401).json(failureDetails);
+          return;
+        }
+        // Login successful, save them in the session.
+        req.login(theUser, (err) => {
+            if(err){
+                res.status(500).json({message:"Session save went bad."});
+                return;
+            }
+
+            // Clear the encryptedPassword before sending
+            // (not from the database, just from the object)
+            theUser.encryptedPassword = undefined;
+
+            // Everything worked! Send the user's information to the client.
+            res.status(200).json(theUser);
+        });
+    });
+    authenticateFunction(req, res, next);
+});
+
+
+authRoutes.post("/api/logout", (req, res, next) => {
+  // req.logout() defined by passport
+  req.logout();
+  res.status(200).json({ message: "Logged out successfully!" });
+});
+
+
+authRoutes.get("/api/checklogin", (req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.status(200).json(req.user);
+    return;
+  }
+
+
+
+
 module.exports = authRoutes;
