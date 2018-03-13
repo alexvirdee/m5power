@@ -22,7 +22,7 @@ mcarRoutes.post('/api/mcars/new', mcarUploader.single('mcarPhoto'), (req, res, n
         year: req.body.year,
         posts: req.body.posts,
         specs: req.body.specs,
-        image: req.body.image,
+        image: req.body.image || '',
         owner: req.user._id
     });
     if (req.file) {
@@ -31,7 +31,7 @@ mcarRoutes.post('/api/mcars/new', mcarUploader.single('mcarPhoto'), (req, res, n
 
     newCar.save((err) => {
         if (err) {
-            res.status(500).json({ message: "Error occurrec from database" });
+            res.status(500).json({ message: "Error occurred from database" });
             return;
         }
         // validation errors

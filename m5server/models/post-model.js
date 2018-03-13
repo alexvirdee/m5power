@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const DiscussionSchema = require('./discussion-model').Schema;
+const DiscussionSchema = require('./discussion-model').schema;
 
 const PostSchema = new Schema({
 		title: {
@@ -19,7 +19,11 @@ const PostSchema = new Schema({
 			type: Date,
 			default: Date.now
 		},
-		discussion: [ DiscussionSchema ]
+		image: {
+			type: String,
+			default: ''
+		},
+		discussion: [DiscussionSchema]
 	}
 );
 
