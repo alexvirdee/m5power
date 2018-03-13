@@ -4,9 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var session = require('express-session');
+var passport = require('passport');
+var cors = require('cors');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+require('./configs/passport-config');
+
+mongoose.connect('mongodb://localhost/M5power');
 
 var app = express();
 
@@ -15,15 +20,39 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Add session 
+app.use(session({
+  secret:"M5POWER",
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(
+  cors({
+    credentials: true,                 // allow other domains to send cookies
+    origin: ["http://localhost:4200"]  // these are the domains that are allowed
+  })
+);
+
+
+// ========== Routing ==========================
+var index = require('./routes/index');
 app.use('/', index);
-app.use('/users', users);
+
+var authRoutes = require("./routes/auth-routes");
+app.use("/auth", authRoutes);
+
+// ==============================================
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
