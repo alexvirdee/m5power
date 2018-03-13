@@ -56,7 +56,7 @@ authRoutes.post('/signup', (req, res, next) => {
 });
 
 
-authRoutes.post('/api/login', (req, res, next) => {
+authRoutes.post('/login', (req, res, next) => {
     const authenticateFunction = passport.authenticate('local', (err, theUser, failureDetails) => {
 
         if(err){
@@ -88,14 +88,14 @@ authRoutes.post('/api/login', (req, res, next) => {
 });
 
 
-authRoutes.post("/api/logout", (req, res, next) => {
+authRoutes.post("/logout", (req, res, next) => {
   // req.logout() defined by passport
   req.logout();
   res.status(200).json({ message: "Logged out successfully!" });
 });
 
 
-authRoutes.get("/api/checklogin", (req, res, next) => {
+authRoutes.get("/checklogin", (req, res, next) => {
   if (req.isAuthenticated()) {
     res.status(200).json(req.user);
     return;

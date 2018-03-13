@@ -51,6 +51,9 @@ app.use('/', index);
 var authRoutes = require("./routes/auth-routes");
 app.use("/auth", authRoutes);
 
+var mcarRoutes = require("./routes/mcars-routes");
+app.use("/", mcarRoutes);
+
 // ==============================================
 
 

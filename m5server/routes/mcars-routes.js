@@ -11,7 +11,7 @@ const mcarUploader = multer({
 });
 
 // create a new car 
-mcarRoutes.post('/api/mcars/new', mcarUploader.single('mcarPhoto') (req, res, next) => {
+mcarRoutes.post('/api/mcars/new', mcarUploader.single('mcarPhoto'), (req, res, next) => {
 	if (!req.user) {
 		res.status(401).json({message: "Login to add a new M Car"});
 		return;
@@ -47,3 +47,31 @@ mcarRoutes.post('/api/mcars/new', mcarUploader.single('mcarPhoto') (req, res, ne
     	res.status(200).json(newCar);
     });
 });
+
+
+// View BMW M Cars
+mcarRoutes.get('/api/mcars', (req, res, next) => {
+	if (!req.user) {
+      res.status(401).json({ message: "Log in to see the cars." });
+      return;
+    }
+    MCar.find()
+      
+      // don't retrieve "encryptedPassword" 
+      .populate('user', { encryptedPassword: 0 })
+      .exec((err, MCars) => {
+        if (err) {
+          res.status(500).json({ message: "Finding M Cars went bad." });
+          return;
+        }
+        res.status(200).json(MCars);
+      });
+})
+
+
+
+
+
+
+
+module.exports = mcarRoutes;
