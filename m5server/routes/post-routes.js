@@ -11,31 +11,31 @@ const postUploader = multer({
 });
 
 // create a new post under car 
-postRoutes.post('/api/mcars/new/post', postUploader.single('postPhoto'), (req, res, next) => {
+postRoutes.post('/api/mcars/:id/post', postUploader.single('postPhoto'), (req, res, next) => {
 	if (!req.user) {
 		res.status(401).json({ message: "Login to create a new post"});
 		return;
 	}
-
 	const newPost = new Post({
 		title: req.body.title,
 		owner: req.user._id,
-		post: req.body.post,
+		text: req.body.text,
 		date: req.body.date,
-		discussion: req.body.discussion
+        discussions: Schema.ObjectId
 	});
 	 if(req.file){
         newPost.image = '/uploads' + req.file.filename;
     }
     newPost.save((err) => {
+    	console.log(newPost);
         if(err){
-            res.status(500).json({message: "Error occurred from the database."});
+            res.status(500).json({message: `Error occurred from the database: ${err}`});
             return;
         }
         // validation errors
-        if (err && newPhone.errors){
+        if (err && newPost.errors){
             res.status(400).json({
-                postingError: newPost.errors.brand,
+                titleError: newPost.errors.title,
             });
             return;
         }

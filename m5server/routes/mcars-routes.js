@@ -97,7 +97,7 @@ mcarRoutes.put('/api/mcars/:id', (req, res, next) => {
     }
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
         res.status(400).json({ message: "That ID is not valid" });
-        return;
+        return; 
     }
 
     const updates = {

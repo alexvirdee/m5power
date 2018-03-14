@@ -11,7 +11,7 @@ const PostSchema = new Schema({
 			type: Schema.Types.ObjectId,
 			ref: 'User'
 		},
-		post: {
+		text: {
 			type: String,
 			required: [true, "Post is required"]
 		},
