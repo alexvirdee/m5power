@@ -3,14 +3,18 @@ import { NgModule } from '@angular/core';
 import { MaterializeModule } from "angular2-materialize";
 
 
+
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LandingComponent } from './landing/landing.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
