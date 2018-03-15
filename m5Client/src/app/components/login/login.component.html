@@ -1,18 +1,18 @@
 <div id="login-page" class="row">
 	<h4>Login Now</h4>
     <div class="col s12 z-depth-6 card-panel">
-      <form class="login-form">
+      <form class="login-form" (ngSubmit)="doLogin()">
         <div class="row margin">
           <div class="input-field col s12">
-            <i class="mdi-social-person-outline prefix material-icons">email</i>
-            <input class="validate" id="email" type="email">
-            <label for="email" data-error="wrong" data-success="right" class="center-align">Email</label>
+            <i class="mdi-social-person-outline prefix material-icons">person</i>
+            <input class="validate" id="username" type="text" [(ngModel)]="loginInfo.username" name="loginUsername">
+            <label for="username" class="center-align">Username</label>
           </div>
         </div>
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-action-lock-outline prefix material-icons">security</i>
-            <input id="password" type="password">
+            <input id="password" type="password" [(ngModel)]="loginInfo.password" name="loginPassword">
             <label for="password">Password</label>
           </div>
         </div>

@@ -1,40 +1,41 @@
 <div id="signup-page" class="row">
-	<h4>Sign Up Today</h4>
-    <div class="col s12 signup card-panel">
-      <form class="signup-form" (ngSubmit)="doSignUp()">
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="mdi-social-person-outline prefix material-icons">email</i>
-            <input class="validate" id="email" type="email" [(ngModel)]="signUpInfo.email" name="emailValue">
-            <label for="email" class="center-align">Email</label>
-          </div>
+  <h4>Sign Up Today</h4>
+  <div class="col s12 signup card-panel">
+    <form class="signup-form" (ngSubmit)="doSignUp()">
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-social-person-outline prefix material-icons">email</i>
+          <input class="validate" id="email" type="email" [(ngModel)]="signUpInfo.email" name="emailValue">
+          <label for="email" class="center-align">Email</label>
         </div>
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="mdi-social-person-outline prefix material-icons">person</i>
-            <input class="validate" id="username" type="text" [(ngModel)]="signUpInfo.username" name="usernameValue">
-            <label for="username"  class="center-align">Username</label>
-          </div>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-social-person-outline prefix material-icons">person</i>
+          <input class="validate" id="username" type="text" [(ngModel)]="signUpInfo.username" name="usernameValue">
+          <label for="username" class="center-align">Username</label>
         </div>
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="mdi-action-lock-outline prefix material-icons">security</i>
-            <input id="password" type="password" [(ngModel)]="signUpInfo.password" name="passwordValue">
-            <label for="password">Password</label>
-          </div>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-action-lock-outline prefix material-icons">security</i>
+          <input id="password" type="password" [(ngModel)]="signUpInfo.password" name="passwordValue">
+          <label for="password">Password</label>
         </div>
-        <div class="row">
-          <div class="input-field right col s4">
-            <button style="background-color: #003d6c" type="submit" class="btn waves-effect waves-light col s12" >Register</button> 
-          </div>
+      </div>
+      <div class="row">
+        <p *ngIf="errorMessage" class="error">
+          {{ errorMessage }}
+        </p>
+        <div class="input-field right col s4">
+          <button style="background-color: #003d6c" type="submit" class="btn waves-effect waves-light col s12">Register</button>
         </div>
-        <div class="row">
-          <div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a [routerLink]="['login']">Already a member? Login Now</a></p>
-          </div>         
+      </div>
+      <div class="row">
+        <div class="input-field col s6 m6 l6">
+          <p class="margin medium-small"><a [routerLink]="['login']">Already a member? Login Now</a></p>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
-
-
+</div>

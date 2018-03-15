@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
         <li><a [routerLink]="['search']">Search</a></li>
       	<li><a [routerLink]="['forums']">Forums</a></li>
         <li><a [routerLink]="['login']">Login</a></li>
+        <li><a [routerLink]="['']">Logout</a></li>
       </ul>
     </div>
   </nav>
