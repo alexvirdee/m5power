@@ -15,12 +15,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { SearchComponent } from './components/search/search.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { ForumsComponent } from './components/forums/forums.component';
 
 
 const routes: Routes = [
   { path: '',  component:  SignupComponent },
   { path: 'login',  component: LoginComponent },
   { path: 'search', component: SearchComponent },
+  { path: 'forums', component: ForumsComponent },
   { path: '**', redirectTo: '' }
 ];
 
@@ -31,7 +33,8 @@ const routes: Routes = [
     NavbarComponent,
     SearchComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ForumsComponent
   ],
   imports: [
     BrowserModule,

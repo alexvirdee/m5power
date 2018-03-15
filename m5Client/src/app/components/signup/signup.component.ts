@@ -10,6 +10,7 @@ import { AuthService } from '../../services/auth.service';
 export class SignupComponent implements OnInit {
 
 signUpInfo = {
+	email: "",
   	username: "",
   	password: ""
   };
@@ -26,7 +27,7 @@ signUpInfo = {
   	.signup(this.signUpInfo)
   	.then(resultFromApi => {
   		// clear form
-  		this.signUpInfo = { username: "", password: ""};
+  		this.signUpInfo = { email: "", username: "", password: ""};
 
   		// clear error message
   		this.errorMessage = "";
