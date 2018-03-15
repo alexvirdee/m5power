@@ -1,3 +1,44 @@
-<p>
-  signup works!
-</p>
+<div id="signup-page" class="row">
+	<h4>Sign Up Today</h4>
+    <div class="col s12 signup card-panel">
+      <form class="signup-form">
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input class="validate" id="email" type="email">
+            <label for="email" class="center-align">Email</label>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input class="validate" id="username" type="email">
+            <label for="username"  class="center-align">Username</label>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input id="password" type="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field right col s4">
+            <a style="background-color: #003d6c" class="btn waves-effect waves-light col s12">Register</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <p class="margin medium-small"><a [routerLink]="['login']">Already a member? Login Now</a></p>
+          </div>
+          <div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a href="forgot-password.html">Forgot password?</a></p>
+          </div>          
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+

@@ -1,3 +1,35 @@
-<p>
-  login works!
-</p>
+<div id="login-page" class="row">
+	<h4>Login Now</h4>
+    <div class="col s12 z-depth-6 card-panel">
+      <form class="login-form">
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input class="validate" id="email" type="email">
+            <label for="email" data-error="wrong" data-success="right" class="center-align">Email</label>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input id="password" type="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field right col s4">
+            <a style="background-color: #003d6c" class="btn waves-effect waves-light col s12">Login</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <p class="margin medium-small"><a [routerLink]="['']">Register Now!</a></p>
+          </div>
+          <div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a href="forgot-password.html">Forgot password?</a></p>
+          </div>          
+        </div>
+
+      </form>
+    </div>
+  </div>
