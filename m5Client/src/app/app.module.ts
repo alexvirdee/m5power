@@ -12,13 +12,13 @@ import { AuthService } from './services/auth.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
 import { SearchComponent } from './components/search/search.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 const routes: Routes = [
-  { path: '',  component: LandingComponent },
+  { path: '',  component:  SignupComponent },
   { path: 'login',  component: LoginComponent },
   { path: 'search', component: SearchComponent },
   { path: '**', redirectTo: '' }
@@ -29,9 +29,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     NavbarComponent,
-    LandingComponent,
     SearchComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
