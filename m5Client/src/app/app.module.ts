@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { MaterializeModule } from "angular2-materialize";
 
 // routing
@@ -33,6 +35,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    FormsModule,
     MaterializeModule,
     RouterModule.forRoot(routes)
   ],
