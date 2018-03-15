@@ -5,6 +5,9 @@ import { MaterializeModule } from "angular2-materialize";
 // routing
 import { RouterModule, Routes } from '@angular/router';
 
+// Services
+import { AuthService } from './services/auth.service';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LandingComponent } from './components/landing/landing.component';
@@ -33,7 +36,7 @@ const routes: Routes = [
     MaterializeModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
