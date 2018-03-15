@@ -8,11 +8,11 @@ export class AuthService {
 
   constructor( private myHttp:Http ) { }
 
-
   signup(componentInfo) {
   	return this.myHttp.post(`${environment.apiBase}/auth/signup`,
 
   	{
+      signUpEmail: componentInfo.email,
   		signUpUsername: componentInfo.username,
   		signUpPassword: componentInfo.password
   	}
