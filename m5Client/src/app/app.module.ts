@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Services
 import { AuthService } from './services/auth.service';
+import { RouterGuardService } from './services/router-guard.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -46,7 +47,7 @@ const routes: Routes = [
     MaterializeModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService],
+  providers: [AuthService, RouterGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
