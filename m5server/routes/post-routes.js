@@ -118,7 +118,26 @@ postRoutes.put('/api/mcars/:id/post/edit', (req, res, next) => {
 });
 
 // No posts should be deleted but making route just in case 
+postRoutes.delete('/api/mcars/:id', (req, res, next) => {
+     if (!req.user) {
+    res.status(401).json({ message: "Log in to delete your post." });
+    return;
+  }
+   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: "Specified id is not valid." });
+    return;
+  }
+  Post.remove({ _id: req.params.id }, err => {
+    if (err) {
+      res.json(err);
+      return;
+    }
 
+    res.json({
+      message: "The post has been successfully removed."
+    });
+  });
+});
 
 
 module.exports = postRoutes;
