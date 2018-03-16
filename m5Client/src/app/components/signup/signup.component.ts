@@ -42,4 +42,3 @@ signUpInfo = {
   } // close doSignUp()
 }
 
-}
