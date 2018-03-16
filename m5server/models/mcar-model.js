@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Post = require('./post-model');
 
 const MCarSchema = new Schema({
      modelM: {
@@ -10,7 +11,7 @@ const MCarSchema = new Schema({
         type: Number,
         required: true
     },
-    posts: Array,
+    posts: [Post.schema],
     specs: Array,
     image: {
         type: String,

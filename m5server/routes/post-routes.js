@@ -6,6 +6,7 @@ const postRoutes = express.Router();
 // models
 const Post = require('../models/post-model');
 const MCar = require('../models/mcar-model');
+const Discussion = require('../models/discussion-model');
 
 // Multer to use for post images
 const postUploader = multer({
@@ -14,38 +15,56 @@ const postUploader = multer({
 
 // create a new post for specific M car 
 postRoutes.post('/api/mcars/:id/post/new', postUploader.single('postPhoto'), (req, res, next) => {
-	if (!req.user) {
+	const mcarId = req.params.id;
+    if (!req.user) {
 		res.status(401).json({ message: "Login to create a new post"});
 		return;
 	}
-	const newPost = new Post({
-		title: req.body.title,
-		owner: req.user._id,
-		text: req.body.text,
-		date: req.body.date,
-        discussions: Schema.ObjectId
-	});
-	 if(req.file){
-        newPost.image = '/uploads' + req.file.filename;
-    }
-    newPost.save((err) => {
-    	console.log(newPost);
-        if(err){
-            res.status(500).json({message: `Error occurred from the database: ${err}`});
-            return;
-        }
-        // validation errors
-        if (err && newPost.errors){
-            res.status(400).json({
-                titleError: newPost.errors.title,
-            });
-            return;
-        }
-        req.user.encryptedPassword = undefined;
-        newPost.user = req.user;
 
-        res.status(200).json(newPost);
+    MCar.findById(mcarId, (err, foundCar) => {
+
+        if(err){
+            console.log(err);
+            return;
+        }
+        const newPost = new Post({
+        title: req.body.title,
+        owner: req.user._id,
+        text: req.body.text,
+        date: Date.now(),
+        mcar: mcarId
+        // discussions: Schema.ObjectId
     });
+    if(req.file){
+            newPost.image = '/uploads' + req.file.filename;
+        }
+        foundCar.posts.push(newPost);
+        // console.log("foundCar", foundCar)
+        foundCar.save(err => {
+            if(err){
+                    res.status(500).json({message: `Error occurred from the database: ${err}`});
+                    return;
+                }
+            newPost.save((err) => {
+                    // console.log(newPost);
+                    if(err){
+                        res.status(500).json({message: `Error occurred from the database: ${err}`});
+                        return;
+                    }
+                    // validation errors
+                    if (err && newPost.errors){
+                        res.status(400).json({
+                            titleError: newPost.errors.title,
+                        });
+                        return;
+                    }
+                    req.user.encryptedPassword = undefined;
+                    newPost.user = req.user;
+
+                    res.status(200).json(newPost);
+                });
+        })
+    })
 });
 
 // view all posts for a specific M car 
@@ -57,12 +76,12 @@ postRoutes.get('/api/mcars/:id/posts', (req, res, next) => {
     Post.find()
     // retrieve info of the owners 
     .populate('user', { encryptedPassword: 0 })
-      .exec((err, allThePhones) => {
+      .exec((err, allThePosts) => {
         if (err) {
           res.status(500).json({ message: "Phones find went bad." });
           return;
         }
-        res.status(200).json(allThePhones);
+        res.status(200).json(allThePosts);
       });
 });
 
@@ -117,12 +136,12 @@ postRoutes.put('/api/mcars/:id/post/edit', (req, res, next) => {
     });
 });
 
-// No posts should be deleted but making route just in case 
+// No posts should be deleted but making a route just in case 
 postRoutes.delete('/api/mcars/:id', (req, res, next) => {
      if (!req.user) {
     res.status(401).json({ message: "Log in to delete your post." });
     return;
-  }
+    }
    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: "Specified id is not valid." });
     return;
@@ -138,6 +157,54 @@ postRoutes.delete('/api/mcars/:id', (req, res, next) => {
     });
   });
 });
+
+
+// create discussion
+postRoutes.post('/api/mcars/:mcarId/post/:postId/discussion/new', (req, res, next) => {
+    const mcarId = req.params.mcarId;
+    const postId = req.params.postId;
+
+    if (!req.user) {
+        res.status(401).json({ message: "Log in to delete your post." });
+    return;
+    }
+    if (!mongoose.Types.ObjectId.isValid(req.params.mcarId)) {
+        res.status(400).json({ message: "Specified id is not valid." });
+    return;
+    }
+        MCar.findById(mcarId, (err, foundCar) => {
+        if(err){
+            res.status(500).json({message: `Error occurred from the database: ${err}`});
+            return;
+          }
+        console.log("Car:", foundCar)
+        Post.findById(postId, (err, foundPost) => {
+            if(err){
+                res.status(500).json({message: `Error occurred from the database: ${err}`});
+                return;
+            }
+            console.log("found post",foundPost)
+            const newDiscussion = new Discussion({
+                _author: req.user._id,
+                content: req.body.content
+            })
+
+            foundPost.discussion.push(newDiscussion);
+            foundPost.save(err => {
+                if(err){
+                    res.status(500).json({message: `Error occurred from the database: ${err}`});
+                    return;
+                }
+            })
+            foundCar.posts.push(foundPost);
+            foundCar.save(err => {
+                console.log("err while saving car", err)
+            })
+            res.status(200).json(foundCar);
+        })
+    })
+})
+
 
 
 module.exports = postRoutes;

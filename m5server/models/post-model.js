@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const DiscussionSchema = require('./discussion-model').schema;
+const Discussion = require('./discussion-model');
+
 
 const PostSchema = new Schema({
 		title: {
@@ -24,7 +25,11 @@ const PostSchema = new Schema({
 			required: [false, "image for post is not required"],
 			default: ''
 		},
-		discussion: [DiscussionSchema]
+		mcar: { type: Schema.Types.ObjectId,
+				// required: true,
+				ref: 'MCar'
+		 },
+		discussion: [Discussion.schema]
 	}
 );
 
