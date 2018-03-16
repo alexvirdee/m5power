@@ -15,7 +15,7 @@ const PostSchema = new Schema({
 			type: String,
 			required: [true, "Post is required"]
 		},
-		date: {
+		createdAt: {
 			type: Date,
 			default: Date.now
 		},

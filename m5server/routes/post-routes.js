@@ -3,15 +3,17 @@ const express = require('express');
 const multer = require('multer');
 const postRoutes = express.Router();
 
+// models
 const Post = require('../models/post-model');
+const MCar = require('../models/mcar-model');
 
 // Multer to use for post images
 const postUploader = multer({
 	dest: __dirname + '/../public/uploads/'
 });
 
-// create a new post under car 
-postRoutes.post('/api/mcars/:id/post', postUploader.single('postPhoto'), (req, res, next) => {
+// create a new post for specific M car 
+postRoutes.post('/api/mcars/:id/post/new', postUploader.single('postPhoto'), (req, res, next) => {
 	if (!req.user) {
 		res.status(401).json({ message: "Login to create a new post"});
 		return;
@@ -44,6 +46,64 @@ postRoutes.post('/api/mcars/:id/post', postUploader.single('postPhoto'), (req, r
 
         res.status(200).json(newPost);
     });
+});
+
+// view all posts for a specific M car 
+postRoutes.get('/api/mcars/:id/posts', (req, res, next) => {
+    if (!req.user) {
+        res.status(401).json({ message: "Login to see posts"});
+        return
+    }
+    Post.find()
+    // retrieve info of the owners 
+    .populate('user', { encryptedPassword: 0 })
+      .exec((err, allThePhones) => {
+        if (err) {
+          res.status(500).json({ message: "Phones find went bad." });
+          return;
+        }
+        res.status(200).json(allThePhones);
+      });
+});
+
+
+// View a single post thread for an M car 
+postRoutes.get('/api/mcars/:id/post', (req, res, next) => {
+    if (!req.user) {
+        res.status(401).json({ message: "Login to view this post"});
+        return
+    }
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
+   Post.findById(req.params.id, (err, thePost) => {
+    if (err) {
+      //res.json(err);
+      res.status(500).json({ message: "There has been an error finding that thread" });
+      return;
+    }
+
+    res.status(200).json(thePost);
+  });
+});
+
+// update a post that a user makes 
+postRoutes.put('/api/mcars/:id/post/edit', (req, res, next) => {
+     if (!req.user) {
+      res.status(401).json({ message: "Login to update your post" });
+      return;
+    }
+     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+        res.status(400).json({ message: "Specified id is not valid" });
+        return;
+    }
+    const updates = {
+        title: req.body.mcarTitle,
+        text: req.body.mcarText,
+        createdAt: Date.now(),
+        image: req.body.image 
+    };
 });
 
 
