@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SearchComponent } from './components/search/search.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ForumsComponent } from './components/forums/forums.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'login',  component: LoginComponent },
   { path: 'search', component: SearchComponent },
   { path: 'forums', component: ForumsComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: '**', redirectTo: '' }
 ];
 
@@ -34,7 +36,8 @@ const routes: Routes = [
     SearchComponent,
     LoginComponent,
     SignupComponent,
-    ForumsComponent
+    ForumsComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

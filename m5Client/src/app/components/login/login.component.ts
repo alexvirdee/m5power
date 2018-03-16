@@ -19,6 +19,15 @@ export class LoginComponent implements OnInit {
   constructor(private myAuth: AuthService, private myRouter: Router) { }
 
   ngOnInit() {
+    this.myAuth.checklogin()
+      // if success we are logged in
+      .then(res => {
+        this.myRouter.navigate(['/search']);
+      })
+
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   doLogin() {
