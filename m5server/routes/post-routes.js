@@ -159,7 +159,7 @@ postRoutes.delete('/api/mcars/:id', (req, res, next) => {
 });
 
 
-// create discussion
+// create discussion to the M car post
 postRoutes.post('/api/mcars/:mcarId/post/:postId/discussion/new', (req, res, next) => {
     const mcarId = req.params.mcarId;
     const postId = req.params.postId;
@@ -201,9 +201,9 @@ postRoutes.post('/api/mcars/:mcarId/post/:postId/discussion/new', (req, res, nex
                 console.log("err while saving car", err)
             })
             res.status(200).json(foundCar);
-        })
-    })
-})
+        });
+    });
+});
 
 
 
