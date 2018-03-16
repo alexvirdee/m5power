@@ -13,7 +13,7 @@ const PostSchema = new Schema({
 		},
 		text: {
 			type: String,
-			required: [true, "Post is required"]
+			required: [true, "Post content is required"]
 		},
 		createdAt: {
 			type: Date,
@@ -21,6 +21,7 @@ const PostSchema = new Schema({
 		},
 		image: {
 			type: String,
+			required: [false, "image for post is not required"],
 			default: ''
 		},
 		discussion: [DiscussionSchema]

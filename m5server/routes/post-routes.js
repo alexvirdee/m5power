@@ -104,7 +104,21 @@ postRoutes.put('/api/mcars/:id/post/edit', (req, res, next) => {
         createdAt: Date.now(),
         image: req.body.image 
     };
+
+    Post.findByIdAndUpdate(req.params.id, updates, err=> {
+        if (err) {
+            res.json(err);
+            return;
+        }
+
+        res.json({
+            message: "Your post has been updated successfully"
+        });
+    });
 });
+
+// No posts should be deleted but making route just in case 
+
 
 
 module.exports = postRoutes;
