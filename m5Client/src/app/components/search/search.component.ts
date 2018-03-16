@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { McarsService } from "../../services/mcars.service";
+ import { environment } from "../../../environments/environment";
 // import { AuthService } from "../../services/auth.service";
-
 
 @Component({
   selector: 'app-search',
@@ -13,10 +13,12 @@ import { McarsService } from "../../services/mcars.service";
 export class SearchComponent implements OnInit {
 	carsListError: string;
 	mcars: any;
+	baseUrl = environment.apiBase;
 
   constructor( private myRouter: Router, private myCarService: McarsService) { }
 
   ngOnInit() {
+  	this.getTheMCars()
   }
 
    getTheMCars() {

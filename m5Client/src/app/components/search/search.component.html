@@ -1,8 +1,9 @@
 <h3 style="text-align:center;">BMW M Cars</h3>
-<div *ngFor="let mcar of mcars">
-<p>{{ mcar.modelM }}</p>	
-<p>{{ mcar.year }}</p>	
-<p>{{ mcar.specs }}</p>	
+<div style="margin-left: 50px;" *ngFor="let mcar of mcars">
+<strong><p>{{ mcar.modelM }}</p></strong> 	
+<strong><p>{{ mcar.year }}</p>	</strong>
+<strong><p>{{ mcar.specs }}</p></strong>
+<img [src]="baseUrl+ mcar.image" alt="">
 </div>
 
 
