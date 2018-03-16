@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { McarsService } from "../../services/mcars.service";
- import { environment } from "../../../environments/environment";
-// import { AuthService } from "../../services/auth.service";
+import { environment } from "../../../environments/environment";
+
 
 @Component({
   selector: 'app-search',
@@ -23,13 +23,13 @@ export class SearchComponent implements OnInit {
 
    getTheMCars() {
     this.myCarService.getAllCars() 
-    .subscribe(allTheCars => {
-      console.log("allTheCars: ", allTheCars)
-        this.mcars = allTheCars;
+    .subscribe(res => {
+        this.mcars = res;
         console.log("mcars", this.mcars)
+        console.log("images: ", this.mcars[0].image)
       },
       () => {
-        this.carsListError = "Sorry, no cars are here.";
+        this.carsListError = "Sorry, no cars to list.";
       }
     );
   } // close getTheMCars()
