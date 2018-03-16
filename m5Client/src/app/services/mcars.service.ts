@@ -6,6 +6,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class McarsService {
 
-  constructor() { }
+  constructor( private mcarsHttp: Http ) { }
+
+   getAllCars(){
+    return this.mcarsHttp.get(`${environment.apiBase}/api/mcars`,
+    { withCredentials: true })
+    .map(res => res.json())
+  }
 
 }
