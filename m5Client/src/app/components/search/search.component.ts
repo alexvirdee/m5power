@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { McarsService } from "../../services/mcars.service";
-import { AuthService } from "../../services/auth.service";
+// import { AuthService } from "../../services/auth.service";
 
 
 @Component({
@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
 	carsListError: string;
 	mcars: any;
 
-  constructor(private myAuthService: AuthService, private myRouter: Router, private myCarService: McarsService) { }
+  constructor( private myRouter: Router, private myCarService: McarsService) { }
 
   ngOnInit() {
   }

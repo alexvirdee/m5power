@@ -10,7 +10,7 @@ export class McarsService {
 
    getAllCars(){
     return this.mcarsHttp.get(`${environment.apiBase}/api/mcars`,
-    { withCredentials: true })
+    { withCredentials: false })
     .map(res => res.json())
   }
 
