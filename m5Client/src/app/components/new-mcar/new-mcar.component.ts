@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { McarsService } from "../../services/mcars.service";
+import { environment } from "../../../environments/environment";
 
 @Component({
   selector: 'app-new-mcar',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewMcarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private myRouter: Router, private myCarService: McarsService) { }
 
   ngOnInit() {
   }
+
 
 }

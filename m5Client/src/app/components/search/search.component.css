@@ -9,6 +9,6 @@ a, button {
 
 button {
 	float: right;
-	margin: 50px;
+	margin: 50px 100px 0 0;
 }
 
