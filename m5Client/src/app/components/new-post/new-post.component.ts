@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { McarsService } from '../../services/mcars.service';
+import { PostService } from '../../services/post.service';
 import { FileUploader } from 'ng2-file-upload';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
