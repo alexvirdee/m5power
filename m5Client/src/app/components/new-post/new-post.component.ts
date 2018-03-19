@@ -42,7 +42,6 @@ export class NewPostComponent implements OnInit {
       });
   }
 
-
   saveNewPost() {
 	if (this.postUploader.getNotUploadedItems().length === 0) {
 		this.savePostNoImage();
@@ -86,8 +85,6 @@ export class NewPostComponent implements OnInit {
     }
     this.postUploader.uploadAll();
   }
-
-
 
 
 }
