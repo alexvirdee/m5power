@@ -51,10 +51,10 @@ mcarRoutes.post('/api/mcars/new', mcarUploader.single('mcarPhoto'), (req, res, n
 
 // View BMW M Cars
 mcarRoutes.get('/api/mcars', (req, res, next) => {
-    if (!req.user) {
-        res.status(401).json({ message: "Log in to see the cars." });
-        return;
-    }
+    // if (!req.user) {
+    //     res.status(401).json({ message: "Log in to see the cars." });
+    //     return;
+    // }
     MCar.find()
 
         // don't retrieve "encryptedPassword" 
