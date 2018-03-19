@@ -24,7 +24,9 @@ export class NewPostComponent implements OnInit {
     itemAlias: "postImage"
   });
 
-  constructor() { }
+  constructor(private mcarService: McarsService, 
+  			  private myAuth: AuthService, 
+  			  private myRouter: Router) { }
 
   ngOnInit() {
   }
