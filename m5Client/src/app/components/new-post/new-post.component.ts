@@ -26,6 +26,7 @@ export class NewPostComponent implements OnInit {
   });
 
   constructor(private mcarService: McarsService, 
+  			  private postService: PostService,
   			  private myAuth: AuthService, 
   			  private myRouter: Router) { }
 
@@ -51,7 +52,7 @@ export class NewPostComponent implements OnInit {
 	}
 
 	private savePostNoImage() {
-  	this.PostService.createNewPost(this.postData)
+  	this.postService.createNewPost(this.postData)
   	.then( res =>  {
 
   		this.postData = {
@@ -59,7 +60,7 @@ export class NewPostComponent implements OnInit {
   			text: ""
   		}
   		this.savingErr = "";
-  		this.myRouter.navigate(['/searcg'])
+  		this.myRouter.navigate(['/search'])
   	})
   	.catch(err => {
   		this.savingErr = "Something went wrong with saving your post "

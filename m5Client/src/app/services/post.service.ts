@@ -9,13 +9,13 @@ export class PostService {
   constructor( private myHttp: Http ) { }
 
   getAllPosts(){
-    return this.myHttp.get(`${environment.apiBase}/api/mcars/:id/post/new`,
+    return this.myHttp.get(`${environment.apiBase}/api/mcars/:id/posts`,
     { withCredentials: false })
     .map(res => res.json())
   }
 
   createNewPost(dataToSend) {
-  	return this.myHttp.post(`${environment.apiBase}/api/mcars/:id/posts`, 
+  	return this.myHttp.post(`${environment.apiBase} /api/mcars/:id/post/new`, 
   		dataToSend, 
   		{ withCredentials: true})
   	.toPromise()
