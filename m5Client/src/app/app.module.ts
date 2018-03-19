@@ -23,6 +23,7 @@ import { NewPostComponent } from './components/new-post/new-post.component';
 
 // image uploader
 import { FileUploadModule } from "ng2-file-upload";
+import { NewMcarComponent } from './components/new-mcar/new-mcar.component';
 
 
 const routes: Routes = [
@@ -44,7 +45,8 @@ const routes: Routes = [
     SignupComponent,
     ForumsComponent,
     LogoutComponent,
-    NewPostComponent
+    NewPostComponent,
+    NewMcarComponent
   ],
   imports: [
     BrowserModule,
