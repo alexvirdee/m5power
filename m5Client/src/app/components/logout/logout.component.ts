@@ -18,7 +18,7 @@ export class LogoutComponent implements OnInit {
   loggedOut() {
   	this.myAuth.logout()
   		.then(res => {
-  			this.myRouter.navigate(['signup']);
+  			this.myRouter.navigate(['login']);
   		})
   }
 
