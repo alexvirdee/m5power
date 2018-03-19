@@ -13,8 +13,16 @@ import { environment } from '../../../environments/environment';
 })
 export class NewPostComponent implements OnInit {
   postData = {
-  	
+  	title: "",
+  	text: ""
   }
+
+  savingErr: string
+
+  postUploader = new FileUploader({
+    url: environment.apiBase + "/api/mcars/:id/post/new",
+    itemAlias: "postImage"
+  });
 
   constructor() { }
 
