@@ -26,7 +26,6 @@ export class AuthService {
   	.then(res => res.json())
   }
 
-
    login(componentInfo) {
     return (
       this.myHttp
