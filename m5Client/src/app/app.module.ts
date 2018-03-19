@@ -25,8 +25,10 @@ import { NewMcarComponent } from './components/new-mcar/new-mcar.component';
 
 // image uploader
 import { FileUploadModule } from "ng2-file-upload";
-import { FilterPipe } from './pipes/filter.pipe';
 
+
+// pipes 
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 const routes: Routes = [

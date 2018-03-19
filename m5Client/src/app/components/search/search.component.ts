@@ -3,7 +3,8 @@ import { Router } from "@angular/router";
 import { McarsService } from "../../services/mcars.service";
 import { environment } from "../../../environments/environment";
 
-
+// import filter pipe
+import { FilterPipe } from '../../pipes/filter.pipe';
 
 @Component({
   selector: 'app-search',
