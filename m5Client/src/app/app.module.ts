@@ -19,6 +19,7 @@ import { SearchComponent } from './components/search/search.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ForumsComponent } from './components/forums/forums.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { NewPostComponent } from './components/new-post/new-post.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const routes: Routes = [
     LoginComponent,
     SignupComponent,
     ForumsComponent,
-    LogoutComponent
+    LogoutComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
