@@ -3,7 +3,12 @@
 	height: 150px;
 }
 
-a {
+a, button {
 	background-color: #000;
+}
+
+button {
+	float: right;
+	margin: 50px;
 }
 

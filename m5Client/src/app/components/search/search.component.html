@@ -1,5 +1,8 @@
 <h4 style="text-align:center;">BMW M Cars</h4>
 <input style="width:90%;margin-left:10px;" type="text" placeholder="Search for BMW M" [(ngModel)]="pattern">
+  <button [routerLink]="['/new-mcar']" class="btn waves-effect waves-light">Add New M
+    	<i class="material-icons right">add</i>
+  </button>
 <div class="mcars" *ngFor="let mcar of mcars | filter:'modelM':pattern; let i = index">
   <div class="row">
     <div class="col s12 m6">
