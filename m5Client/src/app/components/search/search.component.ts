@@ -4,6 +4,7 @@ import { McarsService } from "../../services/mcars.service";
 import { environment } from "../../../environments/environment";
 
 
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -14,6 +15,7 @@ export class SearchComponent implements OnInit {
 	carsListError: string;
 	mcars: any;
 	baseUrl = environment.apiBase;
+	pattern: string;
 
   constructor( private myRouter: Router, private myCarService: McarsService) { }
 

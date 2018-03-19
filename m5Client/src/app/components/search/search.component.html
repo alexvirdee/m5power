@@ -1,6 +1,6 @@
 <h3 style="text-align:center;">BMW M Cars</h3>
 <label for="search">Search MCars</label>
-<input type="text" placeholder="Search MCars">
+<input type="text" placeholder="Search MCars" [(ngModel)]="pattern" >
 <div style="margin-left: 50px;" *ngFor="let mcar of mcars">
 <strong><p>{{ mcar.modelM }}</p></strong> 	
 <strong><p>{{ mcar.year }}</p>	</strong>
