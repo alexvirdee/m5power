@@ -29,6 +29,23 @@ export class NewPostComponent implements OnInit {
   			  private myRouter: Router) { }
 
   ngOnInit() {
+  	this.myAuth
+  		.checklogin()
+  		// on success user is logged in
+  		.then()
+  		// catch to avoid a console error
+  		.catch(err => {
+        console.log(err);
+        this.myRouter.navigate(["/"]);
+      });
   }
+
+
+
+
+
+
+
+  
 
 }
