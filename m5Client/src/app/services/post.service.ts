@@ -22,4 +22,6 @@ export class PostService {
   	.then(res => res.json());
   }
 
+  
+
 }

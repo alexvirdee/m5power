@@ -59,7 +59,7 @@ const routes: Routes = [
     FileUploadModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService, RouterGuardService, McarsService],
+  providers: [AuthService, RouterGuardService, McarsService, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -51,7 +51,7 @@ export class NewPostComponent implements OnInit {
 	}
 
 	private savePostNoImage() {
-  	this.mcarService.createNewPost(this.postData)
+  	this.PostService.createNewPost(this.postData)
   	.then( res =>  {
 
   		this.postData = {
