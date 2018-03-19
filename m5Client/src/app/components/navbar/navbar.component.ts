@@ -32,7 +32,6 @@ export class NavbarComponent implements OnInit {
       // if success we are logged in
       .then(res => {
         this.user = res;
-        console.log("ng on init check login function working ")
       })
 
       .catch(err => {
