@@ -20,17 +20,20 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ForumsComponent } from './components/forums/forums.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { NewPostComponent } from './components/new-post/new-post.component';
+import { NewMcarComponent } from './components/new-mcar/new-mcar.component';
 
 // image uploader
 import { FileUploadModule } from "ng2-file-upload";
-import { NewMcarComponent } from './components/new-mcar/new-mcar.component';
+
 
 
 const routes: Routes = [
   { path: '',  component:  SignupComponent },
   { path: 'login',  component: LoginComponent },
+  { path: 'new-mcar',  component: NewMcarComponent },
   { path: 'search', component: SearchComponent },
   { path: 'forums', component: ForumsComponent },
+  { path: 'new-post', component: NewPostComponent },
   { path: 'logout', component: LogoutComponent },
   { path: '**', redirectTo: '' }
 ];
