@@ -21,6 +21,9 @@ import { ForumsComponent } from './components/forums/forums.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { NewPostComponent } from './components/new-post/new-post.component';
 
+// image uploader
+import { FileUploadModule } from "ng2-file-upload";
+
 
 const routes: Routes = [
   { path: '',  component:  SignupComponent },
@@ -48,6 +51,7 @@ const routes: Routes = [
     HttpModule,
     FormsModule,
     MaterializeModule,
+    FileUploadModule,
     RouterModule.forRoot(routes)
   ],
   providers: [AuthService, RouterGuardService, McarsService],
