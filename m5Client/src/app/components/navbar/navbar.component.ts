@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService } from "../../services/auth.service";
+import { RouterGuardService } from "../../services/router-guard.service";
 
 @Component({
   selector: 'app-navbar',
@@ -11,8 +12,8 @@ import { AuthService } from "../../services/auth.service";
       <ul id="nav-mobile" class="right">
         <li><a [routerLink]="['search']">Search</a></li>
       	<li><a [routerLink]="['forums']">Forums</a></li>
-        <li><a [routerLink]="['login']">Login</a></li>
-        <li><a ng-click=”logMeOutPls()” [routerLink]="['logout']">Logout</a></li>
+        <li><a  [routerLink]="['login']">Login</a></li>
+        <li><a  *ngIf="user" ng-click=”logMeOutPls()” [routerLink]="['logout']">Logout</a></li>
       </ul>
     </div>
   </nav>
@@ -22,11 +23,21 @@ import { AuthService } from "../../services/auth.service";
 export class NavbarComponent implements OnInit {
   check: boolean = false;
   logoutError: string;
+  user: any;
 
   constructor(private myAuthService: AuthService, private myRouter: Router) { }
 
   ngOnInit() {
-    
+    this.myAuthService.checklogin()
+      // if success we are logged in
+      .then(res => {
+        this.user = res;
+        console.log("ng on init check login function working ")
+      })
+
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   checkIfLoggedIn() {
@@ -34,6 +45,7 @@ export class NavbarComponent implements OnInit {
       // if success we are logged in
       .then(res => {
         this.check = true
+        console.log("check login function")
       })
 
       .catch(err => {
