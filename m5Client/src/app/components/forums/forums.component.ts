@@ -28,7 +28,7 @@ export class ForumsComponent implements OnInit {
         console.log(err);
         this.myRouter.navigate(["/"]);
       });
-    // this.getThePhones()
+    // this.getTheMCars()
   }
 
 }

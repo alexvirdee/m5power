@@ -9,19 +9,16 @@
       <div class="card">
         <div class="card-content">
           <strong><p> {{ mcar.modelM }}</p></strong>
-          <strong><p>{{ mcar.year }}</p>	</strong>
+          <strong><p>{{ mcar.year }}</p>  </strong>
           <strong><p>{{ mcar.specs }}</p></strong>
-          <div >
-            <img class="car-img" [src]="baseUrl + mcar.image">
-          </div>
-         <!--  <div *ngIf="uploaded === false">
-            <img class="car-img" [src]="mcar.image">
-          </div> -->
+          <img class="car-img" [src]="baseUrl + mcar.image">
         </div>
       </div>
       <a [routerLink]="['/forums']" class="btn waves-effect waves-light">View Forums
-    	<i class="material-icons right">send</i>
-  	 </a>
+      <i class="material-icons right">send</i>
+     </a>
     </div>
   </div>
 </div>
+
+

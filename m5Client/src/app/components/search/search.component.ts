@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { McarsService } from "../../services/mcars.service";
 import { environment } from "../../../environments/environment";
+import { AuthService } from '../../services/auth.service';
 
 // import filter pipe
 import { FilterPipe } from '../../pipes/filter.pipe';
@@ -17,10 +18,14 @@ export class SearchComponent implements OnInit {
 	mcars: any;
 	baseUrl = environment.apiBase;
 	pattern: string;
-  constructor( private myRouter: Router, private myCarService: McarsService) { }
+  currentUser: string;
+
+
+  constructor( private myRouter: Router, private myCarService: McarsService, private myAuthService: AuthService ) { }
 
   ngOnInit() {
   	this.getTheMCars()
+    
   }
 
    getTheMCars() {
@@ -36,5 +41,8 @@ export class SearchComponent implements OnInit {
     );
   } // close getTheMCars()
 
+
+}
+  
 
 }
