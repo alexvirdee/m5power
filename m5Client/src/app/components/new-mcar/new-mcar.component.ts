@@ -22,7 +22,7 @@ export class NewMcarComponent implements OnInit {
 
  mcarUploader = new FileUploader({
  	url: environment.apiBase + "/api/mcars/new",
- 	itemAlias: "mcarImage"
+ 	itemAlias: "mcarPhoto"
  });
 
   constructor( private myRouter: Router, private MCarService: McarsService, private myAuth: AuthService ) { }

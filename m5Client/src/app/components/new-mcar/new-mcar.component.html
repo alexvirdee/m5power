@@ -2,11 +2,11 @@
 <div class="new-m">
   <form (ngSubmit)="saveNewMcar()">
     <label for="modelM">Model of M</label>
-    <input type="text" placeholder="model">
+    <input type="text" placeholder="model"  [(ngModel)]="mcarData.modelM" name="modelM" >
     <label for="year">Year</label>
-    <input type="number" placeholder="Year">
+    <input type="number" placeholder="Year"  [(ngModel)]="mcarData.year" name="year">
     <label for="specs">Specifications</label>
-    <input type="text" placeholder="specs">
+    <input type="text" placeholder="specs"  [(ngModel)]="mcarData.specs" name="specs">
     <label for="image">Image</label>
     <input type="file" name="mcarImage" name="mcarPhoto" ng2FileSelect [uploader]="mcarUploader">
     <br>

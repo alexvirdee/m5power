@@ -26,7 +26,7 @@ mcarRoutes.post('/api/mcars/new', mcarUploader.single('mcarPhoto'), (req, res, n
         owner: req.user._id
     });
     if (req.file) {
-        newCar.image = '/uploads' + req.file.filename;
+        newCar.image = '/uploads/' + req.file.filename;
     }
 
     newCar.save((err) => {
