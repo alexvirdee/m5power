@@ -3,23 +3,17 @@
   <i class="material-icons right">add</i>
 </button>
 <div class="posts">
-	<div class="row">
-		<div class="col s12 m6">
-			<div class="card">
-				<div *ngFor="let onePost of mcarPosts"   class="card-content">
-					
-				   {{ onePost.owner }}:
-					<br>
-					
-					{{ onePost.title}}
-					<br>
-
-					{{ onePost.text }}
-				</div>
-			</div>
-		</div>
-	</div>
+  <div *ngFor="let onePost of mcarPosts">
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content">
+            {{ onePost.owner }}:
+            <br> {{ onePost.title}}
+            <br> {{ onePost.text }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-

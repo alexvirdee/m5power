@@ -57,22 +57,6 @@ export class ForumsComponent implements OnInit {
       .catch()
   }
 
-  // get the posts for the forums page 
-  // getCarPosts(carId) {
-  //    this.postService.getAllPosts(carId) 
-  //   .subscribe(res => {
-  //       console.log("this is the response: " + res);
-  //       this.mcar = res;
-  //       console.log("mcars", this.mcar)
-  //       console.log("images: ", this.mcar[0].image)
-  //     },
-  //     () => {
-  //       this.carsListError = "Sorry, no cars to list.";
-  //     }
-  //   );
-  // }
-
-
 
 
 }
