@@ -11,7 +11,7 @@ import { RouterGuardService } from "../../services/router-guard.service";
       <a style="margin-left:10px;" [routerLink]="['']" class="brand-logo left"><img class="nav-logo" src="../../assets/images/M5Power.png" alt="logo" /></a>
       <ul id="nav-mobile" class="right">
         <li><a [routerLink]="['search']">Search</a></li>
-      	<li><a [routerLink]="['forums']">Forums</a></li>
+      	<li><a [routerLink]="['forums/:id']">General Forums</a></li>
         <li><a  [routerLink]="['login']">Login</a></li>
         <li><a  *ngIf="user" ng-click=”logMeOutPls()” [routerLink]="['logout']">Logout</a></li>
       </ul>
