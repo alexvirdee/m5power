@@ -47,7 +47,7 @@ export class NewMcarComponent implements OnInit {
   	}
   }
 
-  saveMCarNoImage() {
+  private saveMCarNoImage() {
   	this.MCarService.createNewCar(this.mcarData)
   	.then( res => {
   		this.mcarData = {
@@ -64,8 +64,23 @@ export class NewMcarComponent implements OnInit {
   }
 
 
-  saveMCarWithImage() {
-
+ private saveMCarWithImage() {
+ 	this.mcarUploader.onBuildItemForm = (item, form) => {
+      form.append('title', this.postData.title);
+      form.append("text", this.postData.text);
+    }
+    this.postUploader.onSuccessItem = (item, response) =>{
+      this.postData = {
+          title: "",
+  		  text: ""
+        };
+        this.savingErr = ""
+        this.myRouter.navigate(["/search"]);
+    }
+    this.postUploader.onErrorItem = (item, response) => {
+      this.savingErr = "Saving the post with image went bad. Sorry!";
+    }
+    this.postUploader.uploadAll();
   }
 
 
