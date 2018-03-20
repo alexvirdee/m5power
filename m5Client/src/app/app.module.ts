@@ -29,6 +29,7 @@ import { FileUploadModule } from "ng2-file-upload";
 
 // pipes 
 import { FilterPipe } from './pipes/filter.pipe';
+import { DiscussionsComponent } from './components/discussions/discussions.component';
 
 
 const routes: Routes = [
@@ -54,7 +55,8 @@ const routes: Routes = [
     LogoutComponent,
     NewPostComponent,
     NewMcarComponent,
-    FilterPipe
+    FilterPipe,
+    DiscussionsComponent
   ],
   imports: [
     BrowserModule,
