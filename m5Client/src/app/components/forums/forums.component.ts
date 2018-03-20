@@ -35,4 +35,14 @@ export class ForumsComponent implements OnInit {
     // this.getTheMCars()
   }
 
+   // get phone and its details
+  getCarDetails(id) {
+    this.mcarService.getId(id)
+      .then( res => {
+        this.mcar = res;
+        console.log("Car details ", this.mcar);
+      })
+      .catch()
+  }
+
 }
