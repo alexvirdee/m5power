@@ -8,11 +8,12 @@ import { RouterGuardService } from "../../services/router-guard.service";
   template: `
 	<nav>
     <div class="nav-wrapper">
-      <a style="margin-left:10px;" [routerLink]="['']" class="brand-logo left"><img class="nav-logo" src="../../assets/images/M5Power.png" alt="logo" /></a>
+      <a style="margin-left:10px;" [routerLink]="['search']" class="brand-logo left"><img class="nav-logo" src="../../assets/images/M5Power.png" alt="logo" /></a>
       <ul id="nav-mobile" class="right">
+        <li><a *ngIf="!user" [routerLink]="['']">Signup</a></li>
         <li><a [routerLink]="['search']">Search</a></li>
       	<li><a [routerLink]="['forums/:id']">Forums</a></li>
-        <li><a  [routerLink]="['login']">Login</a></li>
+        <li><a *ngIf="!user" [routerLink]="['login']">Login</a></li>
         <li><a  *ngIf="user" ng-click=”logMeOutPls()” [routerLink]="['logout']">Logout</a></li>
       </ul>
     </div>
