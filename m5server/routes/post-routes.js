@@ -20,7 +20,6 @@ postRoutes.post('/api/mcars/:id/post/new', postUploader.single('postPhoto'), (re
 		res.status(401).json({ message: "Login to create a new post"});
 		return;
 	}
-
     MCar.findById(mcarId, (err, foundCar) => {
 
         if(err){
@@ -29,14 +28,15 @@ postRoutes.post('/api/mcars/:id/post/new', postUploader.single('postPhoto'), (re
         }
         const newPost = new Post({
         title: req.body.title,
-        owner: req.user._id,
+        owner: req.user.username,
         text: req.body.text,
         date: Date.now(),
         mcar: mcarId
         // discussions: Schema.ObjectId
     });
+        
     if(req.file){
-            newPost.image = '/uploads' + req.file.filename;
+            newPost.image = '/uploads/' + req.file.filename;
         }
         foundCar.posts.push(newPost);
         // console.log("foundCar", foundCar)

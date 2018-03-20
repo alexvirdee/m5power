@@ -8,14 +8,15 @@ export class PostService {
 
   constructor( private myHttp: Http ) { }
 
-  getAllPosts(){
-    return this.myHttp.get(`${environment.apiBase}/api/mcars/:id/posts`,
+  getAllPosts(carId){
+    return this.myHttp.get(`${environment.apiBase}/api/mcars/${carId}/posts`,
     { withCredentials: false })
     .map(res => res.json())
   }
 
-  createNewPost(dataToSend) {
-  	return this.myHttp.post(`${environment.apiBase}/api/mcars/:id/post/new`, 
+  createNewPost(carId, dataToSend) {
+  	// console.log("data", dataToSend)
+  	return this.myHttp.post(`${environment.apiBase}/api/mcars/${carId}/post/new`, 
   		dataToSend, 
   		{ withCredentials: true})
   	.toPromise()

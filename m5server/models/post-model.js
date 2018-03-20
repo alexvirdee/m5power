@@ -8,9 +8,9 @@ const PostSchema = new Schema({
 			type: String,
 			required: [true, "Title is required"]
 		},
-		owner: {
-			type: Schema.Types.ObjectId,
-			ref: 'User'
+		owner: { type: String
+			// type: Schema.Types.ObjectId,
+			// ref: 'User'
 		},
 		text: {
 			type: String,

@@ -3,7 +3,7 @@ import { McarsService } from '../../services/mcars.service';
 import { PostService } from '../../services/post.service';
 import { FileUploader } from 'ng2-file-upload';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
 
@@ -17,49 +17,65 @@ export class NewPostComponent implements OnInit {
   	title: "",
   	text: ""
   }
-
+  mcar = <any>{};
   savingErr: string
+  userInSess = <any>{};
 
   postUploader = new FileUploader({
     url: environment.apiBase + "/api/mcars/:id/post/new",
-    itemAlias: "postImage"
+    itemAlias: "postPhoto"
   });
 
   constructor(private mcarService: McarsService, 
   			  private postService: PostService,
   			  private myAuth: AuthService, 
-  			  private myRouter: Router) { }
+  			  private myRouter: Router,
+  			  private myRoute: ActivatedRoute) { }
 
   ngOnInit() {
   	this.myAuth
   		.checklogin()
   		// on success user is logged in
-  		.then()
+  		.then(res => {
+  			this.userInSess = res;
+  			console.log("user in sess is: ", this.userInSess)
+  		})
   		// catch to avoid a console error
   		.catch(err => {
         console.log(err);
         this.myRouter.navigate(["/"]);
       });
+  		this.myRoute.params.subscribe(params => {
+      this.getCarDetails(params["id"]);
+    });
   }
 
-  saveNewPost() {
+	getCarDetails(id) {
+	    this.mcarService.getId(id)
+	      .then( res => {
+	        this.mcar = res;
+	        console.log("Car details ", this.mcar);
+	      })
+	      .catch()
+	  }
+  saveNewPost(id) {
 	if (this.postUploader.getNotUploadedItems().length === 0) {
-		this.savePostNoImage();
+		this.savePostNoImage(id);
 	} else {
 		this.savePostWithImage();
 		}
 	}
 
-	private savePostNoImage() {
-  	this.postService.createNewPost(this.postData)
+	private savePostNoImage(id) {
+  	this.postService.createNewPost(id, this.postData)
   	.then( res =>  {
-
+  		console.log("this is data from form:", res)
   		this.postData = {
   			title: "",
   			text: ""
   		}
   		this.savingErr = "";
-  		this.myRouter.navigate(['/forums'])
+  		this.myRouter.navigate(['/forums', this.mcar._id])
   	})
   	.catch(err => {
   		this.savingErr = "Something went wrong with saving your post "
@@ -78,13 +94,12 @@ export class NewPostComponent implements OnInit {
   		  text: ""
         };
         this.savingErr = ""
-        this.myRouter.navigate(["/search"]);
+        this.myRouter.navigate(["/forums"]);
     }
     this.postUploader.onErrorItem = (item, response) => {
       this.savingErr = "Saving the post with image went bad. Sorry!";
     }
     this.postUploader.uploadAll();
   }
-
 
 }

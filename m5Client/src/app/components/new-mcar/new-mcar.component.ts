@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from "../../../environments/environment";
 
+
 @Component({
   selector: 'app-new-mcar',
   templateUrl: './new-mcar.component.html',
@@ -19,7 +20,7 @@ export class NewMcarComponent implements OnInit {
  }
 
  savingErr: string
-uploaded: boolean = false;
+ uploaded: boolean = false;
  mcarUploader = new FileUploader({
  	url: environment.apiBase + "/api/mcars/new",
  	itemAlias: "mcarPhoto"

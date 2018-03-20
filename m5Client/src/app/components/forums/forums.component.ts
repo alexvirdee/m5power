@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { McarsService } from "../../services/mcars.service";
+import { PostService } from "../../services/post.service";
 import { AuthService } from "../../services/auth.service";
 import { environment } from "../../../environments/environment";
 
@@ -13,13 +14,16 @@ import 'rxjs/add/operator/toPromise';
 })
 export class ForumsComponent implements OnInit {
  mcar = <any>{};
+ mcarPosts: any;
  currentUser: string;
  baseUrl = environment.apiBase;
+ carsListError: string;
 
   constructor(private myAuthService: AuthService, 
               private myRoute: ActivatedRoute, 
               private myRouter: Router, 
-              private mcarService: McarsService) { }
+              private mcarService: McarsService,
+              private postService: PostService) { }
 
   ngOnInit() {
   	this.myAuthService
@@ -39,16 +43,36 @@ export class ForumsComponent implements OnInit {
     this.myRoute.params.subscribe(params => {
       this.getCarDetails(params["id"]);
     });
+    // this.getCarPosts(carId)
   }
 
-   // get phone and its details
+   // get car and its details
   getCarDetails(id) {
     this.mcarService.getId(id)
       .then( res => {
         this.mcar = res;
-        console.log("Car details ", this.mcar);
+        this.mcarPosts = this.mcar.posts;
+        console.log("McarDetails details posts ", this.mcarPosts);
       })
       .catch()
   }
+
+  // get the posts for the forums page 
+  // getCarPosts(carId) {
+  //    this.postService.getAllPosts(carId) 
+  //   .subscribe(res => {
+  //       console.log("this is the response: " + res);
+  //       this.mcar = res;
+  //       console.log("mcars", this.mcar)
+  //       console.log("images: ", this.mcar[0].image)
+  //     },
+  //     () => {
+  //       this.carsListError = "Sorry, no cars to list.";
+  //     }
+  //   );
+  // }
+
+
+
 
 }

@@ -2,14 +2,15 @@
 <p style="margin-left: 20px; color:red;" *ngIf="savingErr" class="error">
   {{ savingErr }}
 </p>
+
 <div class="new-post">
-  <form (ngSubmit)="saveNewPost()">
+  <form (ngSubmit)="saveNewPost(mcar._id, myForm)" #myForm = "ngForm">
     <input type="text" placeholder="title" [(ngModel)]="postData.title" name="title">
     <textarea name="text" id="textarea" placeholder="input text here" cols="50" rows="20" [(ngModel)]="postData.text" name="text"></textarea>
     <label for="image">Image</label>
     <input type="file" ng2FileSelect [uploader]="postUploader" name="postPhoto">
     <br>
-    <button class="btn waves-effect waves-light">Submit
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
       <i class="material-icons right">send</i>
     </button>
   </form>

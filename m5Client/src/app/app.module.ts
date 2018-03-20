@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'new-mcar',  component: NewMcarComponent },
   { path: 'search', component: SearchComponent },
   { path: 'forums/:id', component: ForumsComponent },
-  { path: 'new-post', component: NewPostComponent },
+  { path: 'new-post/:id', component: NewPostComponent },
   { path: 'logout', component: LogoutComponent },
   { path: '**', redirectTo: '' }
 ];
