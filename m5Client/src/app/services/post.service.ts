@@ -15,13 +15,13 @@ export class PostService {
   }
 
   createNewPost(dataToSend) {
-  	return this.myHttp.post(`${environment.apiBase} /api/mcars/:id/post/new`, 
+  	return this.myHttp.post(`${environment.apiBase}/api/mcars/:id/post/new`, 
   		dataToSend, 
   		{ withCredentials: true})
   	.toPromise()
   	.then(res => res.json());
   }
 
-  
+
 
 }
