@@ -7,6 +7,9 @@ import { environment } from "../../../environments/environment";
 
 import 'rxjs/add/operator/toPromise';
 
+// filter pipe
+import { FilterPipe } from '../../pipes/filter.pipe';
+
 @Component({
   selector: 'app-forums',
   templateUrl: './forums.component.html',
@@ -18,6 +21,7 @@ export class ForumsComponent implements OnInit {
  currentUser: string;
  baseUrl = environment.apiBase;
  carsListError: string;
+ pattern: string;
 
   constructor(private myAuthService: AuthService, 
               private myRoute: ActivatedRoute, 

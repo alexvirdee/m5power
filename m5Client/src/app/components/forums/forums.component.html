@@ -1,9 +1,10 @@
 <h4 *ngIf="currentUser">Welcome to {{mcar.modelM}} forums, {{currentUser.username}}</h4>
-<button [routerLink]="['/new-post', mcar._id]" class="btn waves-effect waves-light">Add New Post
+<input style="width:90%;margin-left:10px;" type="text" placeholder="Search posts" [(ngModel)]="pattern">
+<button [routerLink]="['/new-post', mcar._id]" class="btn waves-effect waves-light post-btn">Add New Post
   <i class="material-icons right">add</i>
 </button>
 <div class="posts">
-  <div *ngFor="let onePost of mcarPosts">
+  <div *ngFor="let onePost of mcarPosts | filter:'title':pattern; let i = index">
     <div class="row">
       <div class="col s12 m6">
         <div class="card">
@@ -13,7 +14,8 @@
             {{ onePost.title}}
             <br> 
             {{ onePost.text }}
-            <a [routerLink]="['/forums', onePost._id, '/discussions']" class="btn waves-effect waves-light discussion-btn">Reply
+            <br>
+            <a [routerLink]="['/forums', onePost._id, 'discussions']" class="btn waves-effect waves-light discussion-btn">Reply
           <i class="material-icons right">chat</i>
           </a>
           </div>

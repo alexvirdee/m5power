@@ -2,13 +2,14 @@ h4 {
 	text-align: center;
 }
 
-button {
-	float: right;
-	margin-right: 50px;
-	background-color: #000;
-}
 
 .discussion-btn {
 	background-color: #000;
 	margin-top: 10px;
+}
+
+.post-btn {
+	float: right;
+	margin: 50px 100px 0 0;
+	background-color: #000;
 }
