@@ -25,7 +25,7 @@ export class NewMcarComponent implements OnInit {
  	itemAlias: "mcarImage"
  });
 
-  constructor( private myRouter: Router, private myCarService: McarsService, private myAuth: AuthService ) { }
+  constructor( private myRouter: Router, private MCarService: McarsService, private myAuth: AuthService ) { }
 
   ngOnInit() {
   	this.myAuth
@@ -48,12 +48,24 @@ export class NewMcarComponent implements OnInit {
   }
 
   saveMCarNoImage() {
-
+  	this.MCarService.createNewCar(this.mcarData)
+  	.then( res => {
+  		this.mcarData = {
+  			modelM: "",
+ 			year: "",
+ 			specs: ""
+  		}
+  		this.savingErr = "";
+  		this.myRouter.navigate(['/search'])
+  	})
+  	.catch(err => {
+  		this.savingErr = "Something went wrong with saving the car"
+  	})
   }
 
 
   saveMCarWithImage() {
-  	
+
   }
 
 

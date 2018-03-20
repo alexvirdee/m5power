@@ -59,7 +59,7 @@ export class NewPostComponent implements OnInit {
   			text: ""
   		}
   		this.savingErr = "";
-  		this.myRouter.navigate(['/search'])
+  		this.myRouter.navigate(['/forums'])
   	})
   	.catch(err => {
   		this.savingErr = "Something went wrong with saving your post "
