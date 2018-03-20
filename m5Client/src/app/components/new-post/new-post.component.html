@@ -1,8 +1,16 @@
 <h3>Add new post</h3>
+<p *ngIf="savingErr" class="error">
+  {{ savingErr }}
+</p>
 <div class="new-post">
-  <input type="text" placeholder="title">
-  <textarea name="text" id="textarea" placeholder="input text here" cols="50" rows="20"></textarea>
-  <button class="btn waves-effect waves-light">Submit
-    	<i class="material-icons right">send</i>
-  	</button>
+  <form (ngSubmit)="saveNewPost()">
+    <input type="text" placeholder="title" [(ngModel)]="postData.title" name="title">
+    <textarea name="text" id="textarea" placeholder="input text here" cols="50" rows="20" [(ngModel)]="postData.text" name="text"></textarea>
+    <label for="image">Image</label>
+    <input type="file" ng2FileSelect [uploader]="postUploader" name="postPhoto">
+    <br>
+    <button class="btn waves-effect waves-light">Submit
+      <i class="material-icons right">send</i>
+    </button>
+  </form>
 </div>
