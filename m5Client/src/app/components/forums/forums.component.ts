@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from '@angular/router';
 import { McarsService } from "../../services/mcars.service";
 import { AuthService } from "../../services/auth.service";
 import { environment } from "../../../environments/environment";
@@ -12,11 +12,14 @@ import 'rxjs/add/operator/toPromise';
   styleUrls: ['./forums.component.css']
 })
 export class ForumsComponent implements OnInit {
- currentUser: string;
  mcar = <any>{};
+ currentUser: string;
  baseUrl = environment.apiBase;
 
-  constructor(private myAuthService: AuthService, private myRouter: Router, private mcarService: McarsService) { }
+  constructor(private myAuthService: AuthService, 
+              private myRoute: ActivatedRoute, 
+              private myRouter: Router, 
+              private mcarService: McarsService) { }
 
   ngOnInit() {
   	this.myAuthService
@@ -33,6 +36,9 @@ export class ForumsComponent implements OnInit {
         this.myRouter.navigate(["/"]);
       });
     // this.getTheMCars()
+    this.myRoute.params.subscribe(params => {
+      this.getCarDetails(params["id"]);
+    });
   }
 
    // get phone and its details
