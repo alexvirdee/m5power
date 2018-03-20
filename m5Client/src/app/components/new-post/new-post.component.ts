@@ -62,7 +62,7 @@ export class NewPostComponent implements OnInit {
 	if (this.postUploader.getNotUploadedItems().length === 0) {
 		this.savePostNoImage(id);
 	} else {
-		this.savePostWithImage();
+		this.savePostWithImage(id);
 		}
 	}
 
@@ -83,18 +83,18 @@ export class NewPostComponent implements OnInit {
   }
 
 
-  private savePostWithImage(){
+  private savePostWithImage(id){
     this.postUploader.onBuildItemForm = (item, form) => {
       form.append('title', this.postData.title);
       form.append("text", this.postData.text);
     }
     this.postUploader.onSuccessItem = (item, response) =>{
       this.postData = {
-          title: "",
+        title: "",
   		  text: ""
         };
         this.savingErr = ""
-        this.myRouter.navigate(["/forums"]);
+        this.myRouter.navigate(['/forums', this.mcar._id]);
     }
     this.postUploader.onErrorItem = (item, response) => {
       this.savingErr = "Saving the post with image went bad. Sorry!";
