@@ -1,13 +1,17 @@
 <h4>Add a new M</h4>
 <div class="new-m">
-  <label for="modelM">Model of M</label>
-  <input type="text" placeholder="model">
-  <label for="year">Year</label>
-  <input type="number" placeholder="Year">
-  <label for="specs">Specifications</label>
-  <input type="text" placeholder="specs">
-  <label for="image">Image</label>
-  <input type="file" name="mcarImage">
-  <br>
-  <input style="margin-top: 10px;" type="submit">
+  <form (ngSubmit)="saveNewMcar()">
+    <label for="modelM">Model of M</label>
+    <input type="text" placeholder="model">
+    <label for="year">Year</label>
+    <input type="number" placeholder="Year">
+    <label for="specs">Specifications</label>
+    <input type="text" placeholder="specs">
+    <label for="image">Image</label>
+    <input type="file" name="mcarImage" name="mcarPhoto" ng2FileSelect [uploader]="mcarUploader">
+    <br>
+   	 <button class="btn waves-effect waves-light" style="margin-top:15px;background-color:#000;"  type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button>
+  </form>
 </div>
