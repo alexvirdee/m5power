@@ -9,8 +9,14 @@
         <div class="card">
           <div class="card-content">
             {{ onePost.owner }}:
-            <br> {{ onePost.title}}
-            <br> {{ onePost.text }}
+            <br> 
+            {{ onePost.title}}
+
+            <br> 
+            {{ onePost.text }}
+            <a [routerLink]="['/discussion', onePost._id]" class="btn waves-effect waves-light discussion-btn">Reply
+          <i class="material-icons right">send</i>
+          </a>
           </div>
         </div>
       </div>
