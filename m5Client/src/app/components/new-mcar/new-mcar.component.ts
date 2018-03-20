@@ -66,21 +66,23 @@ export class NewMcarComponent implements OnInit {
 
  private saveMCarWithImage() {
  	this.mcarUploader.onBuildItemForm = (item, form) => {
-      form.append('title', this.postData.title);
-      form.append("text", this.postData.text);
+      form.append('modelM', this.mcarData.modelM);
+      form.append("year", this.mcarData.year);
+      form.append("specs", this.mcarData.specs);
     }
-    this.postUploader.onSuccessItem = (item, response) =>{
-      this.postData = {
-          title: "",
-  		  text: ""
+    this.mcarUploader.onSuccessItem = (item, response) =>{
+      this.mcarData = {
+          modelM: "",
+ 		  year: "",
+ 		  specs: ""
         };
         this.savingErr = ""
         this.myRouter.navigate(["/search"]);
     }
-    this.postUploader.onErrorItem = (item, response) => {
+    this.mcarUploader.onErrorItem = (item, response) => {
       this.savingErr = "Saving the post with image went bad. Sorry!";
     }
-    this.postUploader.uploadAll();
+    this.mcarUploader.uploadAll();
   }
 
 
