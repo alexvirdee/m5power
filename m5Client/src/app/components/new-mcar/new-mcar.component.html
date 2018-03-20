@@ -1,5 +1,8 @@
 <h4>Add a new M</h4>
 <div class="new-m">
+	<p *ngIf="savingErr" class="error">
+    {{ savingErr }}
+  </p>
   <form (ngSubmit)="saveNewMcar()">
     <label for="modelM">Model of M</label>
     <input type="text" placeholder="model"  [(ngModel)]="mcarData.modelM" name="modelM" >
@@ -8,7 +11,7 @@
     <label for="specs">Specifications</label>
     <input type="text" placeholder="specs"  [(ngModel)]="mcarData.specs" name="specs">
     <label for="image">Image</label>
-    <input type="file" name="mcarImage" name="mcarPhoto" ng2FileSelect [uploader]="mcarUploader">
+    <input type="file" ng2FileSelect [uploader]="mcarUploader" name="mcarPhoto">
     <br>
    	 <button class="btn waves-effect waves-light" style="margin-top:15px;background-color:#000;"  type="submit" name="action">Submit
     <i class="material-icons right">send</i>

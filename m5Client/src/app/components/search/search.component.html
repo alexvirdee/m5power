@@ -11,7 +11,12 @@
           <strong><p> {{ mcar.modelM }}</p></strong>
           <strong><p>{{ mcar.year }}</p>	</strong>
           <strong><p>{{ mcar.specs }}</p></strong>
-          <img class="car-img" [src]="mcar.image">
+          <div >
+            <img class="car-img" [src]="baseUrl + mcar.image">
+          </div>
+         <!--  <div *ngIf="uploaded === false">
+            <img class="car-img" [src]="mcar.image">
+          </div> -->
         </div>
       </div>
       <a [routerLink]="['/forums']" class="btn waves-effect waves-light">View Forums

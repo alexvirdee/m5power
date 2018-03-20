@@ -19,7 +19,7 @@ export class NewMcarComponent implements OnInit {
  }
 
  savingErr: string
-
+uploaded: boolean = false;
  mcarUploader = new FileUploader({
  	url: environment.apiBase + "/api/mcars/new",
  	itemAlias: "mcarPhoto"
@@ -76,7 +76,8 @@ export class NewMcarComponent implements OnInit {
  		  year: "",
  		  specs: ""
         };
-        this.savingErr = ""
+        this.savingErr = "";
+        this.uploaded = true;
         this.myRouter.navigate(["/search"]);
     }
     this.mcarUploader.onErrorItem = (item, response) => {
