@@ -12,11 +12,11 @@
           <strong><p>{{ mcar.year }}</p>  </strong>
           <strong><p>{{ mcar.specs }}</p></strong>
           <img class="car-img" [src]="baseUrl + mcar.image">
+          <a [routerLink]="['/forums', mcar._id]" class="btn waves-effect waves-light forums-btn">View Forums
+          <i class="material-icons right">send</i>
+          </a>
         </div>
-      </div>
-      <a [routerLink]="['/forums']" class="btn waves-effect waves-light">View Forums
-      <i class="material-icons right">send</i>
-     </a>
+      </div> 
     </div>
   </div>
 </div>

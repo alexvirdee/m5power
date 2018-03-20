@@ -4,6 +4,8 @@ import { McarsService } from "../../services/mcars.service";
 import { AuthService } from "../../services/auth.service";
 import { environment } from "../../../environments/environment";
 
+import 'rxjs/add/operator/toPromise';
+
 @Component({
   selector: 'app-forums',
   templateUrl: './forums.component.html',
@@ -11,6 +13,8 @@ import { environment } from "../../../environments/environment";
 })
 export class ForumsComponent implements OnInit {
  currentUser: string;
+ mcar = <any>{};
+ baseUrl = environment.apiBase;
 
   constructor(private myAuthService: AuthService, private myRouter: Router, private mcarService: McarsService) { }
 
