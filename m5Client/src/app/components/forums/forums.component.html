@@ -3,9 +3,6 @@
 <button [routerLink]="['/new-post', mcar._id]" class="btn waves-effect waves-light post-btn">Add New Post
   <i class="material-icons right">add</i>
 </button>
-<!-- <div class="carPhoto">
-	<img class="car-img" [src]="baseUrl + mcar.image">
-</div> -->
 <div class="posts">
   <div *ngFor="let onePost of mcarPosts | filter:'title':pattern; let i = index">
     <div class="row">
