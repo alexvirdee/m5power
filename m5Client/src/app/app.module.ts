@@ -22,6 +22,7 @@ import { ForumsComponent } from './components/forums/forums.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { NewPostComponent } from './components/new-post/new-post.component';
 import { NewMcarComponent } from './components/new-mcar/new-mcar.component';
+import { DiscussionsComponent } from './components/discussions/discussions.component';
 
 // image uploader
 import { FileUploadModule } from "ng2-file-upload";
@@ -29,7 +30,7 @@ import { FileUploadModule } from "ng2-file-upload";
 
 // pipes 
 import { FilterPipe } from './pipes/filter.pipe';
-import { DiscussionsComponent } from './components/discussions/discussions.component';
+
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'new-mcar',  component: NewMcarComponent },
   { path: 'search', component: SearchComponent },
   { path: 'forums/:id', component: ForumsComponent },
+  { path: 'forums/:id/discussion', component: DiscussionsComponent },
   { path: 'new-post/:id', component: NewPostComponent },
   { path: 'logout', component: LogoutComponent },
   { path: '**', redirectTo: '' }

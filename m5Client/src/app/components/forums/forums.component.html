@@ -13,7 +13,7 @@
             {{ onePost.title}}
             <br> 
             {{ onePost.text }}
-            <a [routerLink]="['/discussions', onePost._id]" class="btn waves-effect waves-light discussion-btn">Reply
+            <a [routerLink]="['/forums', onePost._id, '/discussions']" class="btn waves-effect waves-light discussion-btn">Reply
           <i class="material-icons right">chat</i>
           </a>
           </div>
