@@ -9,9 +9,14 @@ var session = require('express-session');
 var passport = require('passport');
 var cors = require('cors');
 
+require("dotenv").config();
+
 require('./configs/passport-config');
 
-mongoose.connect('mongodb://localhost/M5power');
+// mongoose.connect('mongodb://localhost/M5power');
+
+// deploy connection
+mongoose.connect(process.env.MONGODB_URI);
 
 var app = express();
 
