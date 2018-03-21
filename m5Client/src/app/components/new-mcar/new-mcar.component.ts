@@ -12,7 +12,6 @@ import { environment } from "../../../environments/environment";
   styleUrls: ['./new-mcar.component.css']
 })
 export class NewMcarComponent implements OnInit {
-
  mcarData = {
  	modelM: "",
  	year: "",
@@ -52,7 +51,7 @@ export class NewMcarComponent implements OnInit {
   	this.MCarService.createNewCar(this.mcarData)
   	.then( res => {
   		this.mcarData = {
-  			modelM: "",
+  		modelM: "",
  			year: "",
  			specs: ""
   		}
@@ -74,8 +73,8 @@ export class NewMcarComponent implements OnInit {
     this.mcarUploader.onSuccessItem = (item, response) =>{
       this.mcarData = {
           modelM: "",
- 		  year: "",
- 		  specs: ""
+ 		      year: "",
+ 		      specs: ""
         };
         this.savingErr = "";
         this.uploaded = true;

@@ -85,10 +85,10 @@ export class NewPostComponent implements OnInit {
 
   private savePostWithImage(id){
     this.postUploader.onBuildItemForm = (item, form) => {
-      form.append('title', this.postData.title);
+      form.append("title", this.postData.title);
       form.append("text", this.postData.text);
     }
-    this.postUploader.onSuccessItem = (item, response) =>{
+      this.postUploader.onSuccessItem = (item, response) =>{
       this.postData = {
         title: "",
   		  text: ""
@@ -96,10 +96,10 @@ export class NewPostComponent implements OnInit {
         this.savingErr = ""
         this.myRouter.navigate(['/forums', this.mcar._id]);
     }
-    this.postUploader.onErrorItem = (item, response) => {
-      this.savingErr = "Saving the post with image went bad. Sorry!";
+        this.postUploader.onErrorItem = (item, response) => {
+        this.savingErr = "Saving the post with image went bad. Sorry!";
     }
-    this.postUploader.uploadAll();
+        this.postUploader.uploadAll();
   }
 
 }
