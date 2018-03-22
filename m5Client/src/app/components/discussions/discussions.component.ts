@@ -59,13 +59,12 @@ updatedPost: Object = {};
     });
   }
 
-
     // get car and its details
   getCarDetails(id) {
     this.mcarService.getId(id)
       .then( res => {
         this.mcar = res;
-        console.log("This is the response: " + res);
+        console.log("This is the mcar res: " + this.mcar);
       })
       .catch()
   }
