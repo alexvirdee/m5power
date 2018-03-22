@@ -73,7 +73,6 @@ updatedPost: any = {};
 
   // get post and its details
   getPostDetails(id) {
-
   	this.postService.getId(id)
   		.then( res => {
   			this.post = res;
