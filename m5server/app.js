@@ -9,6 +9,11 @@ var session = require('express-session');
 var passport = require('passport');
 var cors = require('cors');
 
+// socket.io configuration
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+
 // require("dotenv").config();
 
 require('./configs/passport-config');
