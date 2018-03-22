@@ -23,6 +23,8 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { NewPostComponent } from './components/new-post/new-post.component';
 import { NewMcarComponent } from './components/new-mcar/new-mcar.component';
 import { DiscussionsComponent } from './components/discussions/discussions.component';
+import { VideosComponent } from './components/videos/videos.component';
+
 
 // image uploader
 import { FileUploadModule } from "ng2-file-upload";
@@ -41,6 +43,7 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'forums/:id', component: ForumsComponent },
   { path: 'forums/:id/discussions', component: DiscussionsComponent },
+  { path: 'videos', component: VideosComponent },
   { path: 'new-post/:id', component: NewPostComponent },
   { path: 'logout', component: LogoutComponent },
   { path: '**', redirectTo: '' }
@@ -59,7 +62,8 @@ const routes: Routes = [
     NewPostComponent,
     NewMcarComponent,
     FilterPipe,
-    DiscussionsComponent
+    DiscussionsComponent,
+    VideosComponent
   ],
   imports: [
     BrowserModule,
