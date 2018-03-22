@@ -55,8 +55,14 @@ export class DiscussionsComponent implements OnInit {
       .catch()
   }
 
-  getPost(id) {
-
+  // get post and its details
+  getPhoneDetails(id) {
+  	this.myPhoneService.getId(id)
+  		.then( res => {
+  			this.phone = res;
+  			console.log("Phone details ", this.phone);
+  		})
+  		.catch()
   }
 
 

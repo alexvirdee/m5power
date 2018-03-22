@@ -23,6 +23,14 @@ export class PostService {
   	.then(res => res.json());
   }
 
+  getId(carId){
+    return this.myHttp.get(`${environment.apiBase}/api/mcars/${carId}/post`,
+          { withCredentials: true })
+          .toPromise()
+          .then(res => res.json())
+          // .map(res => res.json())
+  }
+
 
 
 }
