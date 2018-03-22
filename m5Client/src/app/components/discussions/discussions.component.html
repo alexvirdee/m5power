@@ -1,4 +1,5 @@
 <h2>Discussions Board</h2>
+<input style="width:90%;margin-left:10px;" type="text" placeholder="Search replies" [(ngModel)]="pattern">
 <div class="postings">
   <div class="row postings-row">
     <div class="col s12 m6">
@@ -12,6 +13,20 @@
       </div>
     </div>
   </div>
+
+<div class="replies" *ngFor="let discuss of post.discussion | filter:'content':pattern; let i = index">
+	<div class="row">
+		<div class="col s12 m6">
+			<div class="card z-depth-4">
+				<div class="card-content">
+					<span><p>Created at: {{discuss.date}}</p></span>
+					<span><p>{{discuss.content}}</p></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
   <div class="replies-form">
     <form (ngSubmit)="sendUpdatesToApi(post._id)" #myForm="ngForm">
       <p>Send Reply:</p>

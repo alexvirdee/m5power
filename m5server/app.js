@@ -1,3 +1,4 @@
+require("dotenv").config();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -14,7 +15,6 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 
-// require("dotenv").config();
 
 require('./configs/passport-config');
 

@@ -8,6 +8,9 @@ import { environment } from "../../../environments/environment";
 
 import 'rxjs/add/operator/toPromise';
 
+// filter pipe
+import { FilterPipe } from '../../pipes/filter.pipe';
+
 @Component({
   selector: 'app-discussions',
   templateUrl: './discussions.component.html',
@@ -20,6 +23,7 @@ export class DiscussionsComponent implements OnInit {
  }
 
  post = <any>{};
+ discussion = this.post.discussion
  mcar = <any>{};
  currentUser: string;
  savingErr: string
@@ -85,15 +89,17 @@ updatedPost: any = {};
 
 
 
-  
+
 
 
   sendUpdatesToApi(id) {
   	this.updatedPost = {discussion: this.updatedPostDiscussion}
-  	this.postService.addDiscussionOnPost(id, this.replyData, this.post._id)
+  	this.postService.addDiscussionOnPost(id, this.post._id, this.replyData)
+  	// console.log("+++++++++", this.post._id)
   		.toPromise()
   		.then(res => {
-  			this.myRouter.navigate(['/forums', this.post._id, 'discussions'])
+  			console.log("resssssssss: ", res)
+  			// this.myRouter.navigate(['/forums', this.mcar._id, 'discussions', this.post._id ])
   		})
   		.catch(err => {
   			console.log("Error adding the discussion to this post ", err);
