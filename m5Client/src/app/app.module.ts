@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: 'new-mcar',  component: NewMcarComponent },
   { path: 'search', component: SearchComponent },
   { path: 'forums/:id', component: ForumsComponent },
-  { path: 'forums/:id/discussions', component: DiscussionsComponent },
+  { path: 'forums/:id/discussions/:postId', component: DiscussionsComponent },
   { path: 'videos', component: VideosComponent },
   { path: 'new-post/:id', component: NewPostComponent },
   { path: 'logout', component: LogoutComponent },

@@ -37,6 +37,7 @@ updatedPost: any = {};
               private postService: PostService) { }
 
   ngOnInit() {
+
   	this.myAuthService
       .checklogin()
       // If success, we are logged in.
@@ -55,7 +56,7 @@ updatedPost: any = {};
       this.getCarDetails(params["id"]);
     });
      this.myRoute.params.subscribe(params => {
-      this.getPostDetails(params["id"]);
+      this.getPostDetails(params["postId"]);
     });
   }
 
@@ -65,12 +66,14 @@ updatedPost: any = {};
       .then( res => {
         this.mcar = res;
         console.log("This is the mcar res: " + this.mcar);
+
       })
       .catch()
   }
 
   // get post and its details
   getPostDetails(id) {
+
   	this.postService.getId(id)
   		.then( res => {
   			this.post = res;
@@ -87,21 +90,21 @@ updatedPost: any = {};
   // }
 
   sendUpdatesToApi(id) {
-  	console.log("==================");
-  	console.log(id);
-  	console.log("==================");
-  	console.log(this.replyData);
-  	console.log("==================");
-  	console.log("sending data to api");
+  	// console.log("==================");
+  	// console.log(id);
+  	// console.log("==================");
+  	// console.log(this.replyData);
+  	// console.log("==================");
+  	// console.log("sending data to api");
   	// this.updatedPost = {discussion: this.updatedPostDiscussion}
-  	this.postService.addDiscussionOnPost(id, this.replyData)
-  		.toPromise()
-  		.then(res => {
-  			this.myRouter.navigate(['/forums', this.post._id, 'discussions'])
-  		})
-  		.catch(err => {
-  			console.log("Error adding the discussion to this post ", err);
-  		})
+  	// this.postService.addDiscussionOnPost(id, this.replyData)
+  	// 	.toPromise()
+  	// 	.then(res => {
+  	// 		this.myRouter.navigate(['/forums', this.post._id, 'discussions'])
+  	// 	})
+  	// 	.catch(err => {
+  	// 		console.log("Error adding the discussion to this post ", err);
+  	// 	})
   }
 
 
