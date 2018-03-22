@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="replies-form">
-    <form (ngSubmit)="saveNewReply(post._id, myForm)" #myForm="ngForm">
+    <form (ngSubmit)="sendUpdatesToApi(post._id)" #myForm="ngForm">
       <p>Send Reply:</p>
       <textarea id="replies-text" placeholder="input content here" cols="50" rows="20" [(ngModel)]="replyData.content" name="content"></textarea>
       <br>
@@ -23,6 +23,7 @@
     </form>
   </div>
   <div class="replies" *ngFor="let reply of replies">
-  	
   </div>
 </div>
+
+daaaaaqa {{ mcar.modelM }}

@@ -31,8 +31,8 @@ export class PostService {
           // .map(res => res.json())
   }
 
-  addDiscussionOnPost(carId, updates) {
-    return this.myHttp.put(`${environment.apiBase}/api/mcars/${carId}/post/edit`, updates, { withCredentials: true })
+  addDiscussionOnPost(carId, postId, updates) {
+    return this.myHttp.put(`${environment.apiBase}/api/mcars/${carId}/post/${postId}/edit`, updates, { withCredentials: true })
     .map(res => res.json()); 
   }
 
