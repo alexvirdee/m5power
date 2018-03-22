@@ -24,6 +24,7 @@ export class DiscussionsComponent implements OnInit {
  currentUser: string;
  savingErr: string
  baseUrl = environment.apiBase;
+ replies: any;
 
 
 updatedPostDiscussion: String;
@@ -74,6 +75,7 @@ updatedPost: Object = {};
   	this.postService.getId(id)
   		.then( res => {
   			this.post = res;
+  			this.replies = this.post.discussion;
   			console.log("Here are the post details: ", this.post);
   		})
   		.catch()
@@ -87,8 +89,8 @@ updatedPost: Object = {};
   }
 
   sendUpdatesToApi(id) {
+  	console.log("sending data to api");
   	this.updatedPost = {discussion: this.updatedPostDiscussion}
-
   	this.postService.addDiscussionOnPost(id, this.updatedPost)
   		.toPromise()
   		.then(res => {
