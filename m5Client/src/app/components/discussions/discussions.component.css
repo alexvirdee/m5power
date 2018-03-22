@@ -1,0 +1,31 @@
+h2, h4 {
+	text-align: center;
+}
+
+span {
+	margin-top: 10px;
+}
+
+.postings {
+	display: flex;
+}
+
+.row {
+	width: 100%;
+}
+
+.card-content {
+	color: #fff;
+}
+
+
+textarea {
+	height: 200px;
+	width: 400px;
+	margin: 10px 10px 10px 0;
+}
+
+button {
+	background-color: #000;
+}
+
