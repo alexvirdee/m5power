@@ -18,8 +18,8 @@ const postUploader = multer({
 // update a post that a user makes 
 postRoutes.put('/api/mcars/:id/post/:postId/edit', (req, res, next) => {
     const postId = req.params.postId;
-console.log(" =================== post id: ", postId)
-console.log(typeof(postId))
+    console.log(" =================== post id: ", postId)
+    console.log(typeof(postId))
      if (!req.user) {
       res.status(401).json({ message: "Login to update your post" });
       return;
