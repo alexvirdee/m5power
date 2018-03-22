@@ -12,11 +12,13 @@ span {
 
 .row {
 	width: 100%;
+	margin-left: 20px;
 }
 
 .card-content {
 	color: #fff;
 }
+
 
 
 textarea {
