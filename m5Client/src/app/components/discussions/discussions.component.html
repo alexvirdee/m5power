@@ -12,11 +12,11 @@
     </div>
   </div>
   <div class="replies-form">
-    <form>
+    <form (ngSubmit)="saveNewReply(post._id, myForm)" #myForm="ngForm">
       <p>Send Reply:</p>
-      <textarea name="text" id="replies-text" cols="50" rows="20"></textarea>
+      <textarea id="replies-text" cols="50" rows="20" [(ngModel)]="replyData.content" name="content"></textarea>
       <br>
-      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <button class="btn waves-effect waves-light" type="submit">Submit
         <i class="material-icons right">send</i>
       </button>
     </form>

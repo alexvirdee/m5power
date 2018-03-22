@@ -26,7 +26,8 @@ export class DiscussionsComponent implements OnInit {
  baseUrl = environment.apiBase;
 
 
-
+updatedPostDiscussion: String;
+updatedPost: Object = {};
 
   constructor(private myAuthService: AuthService, 
               private myRoute: ActivatedRoute, 
@@ -78,20 +79,25 @@ export class DiscussionsComponent implements OnInit {
   		.catch()
   }
 
-  saveNewReply(id) {
-  	this.postService.addToDiscussion(id, this.replyData)
-  	.then(res => {
-  		console.log("this is the data from the reply form content: " + res)
-  		this.replyData = {
-  			content: ""
-  		}
-  		this.savingErr = "";
-  		this.myRouter.navigate(['/forums', this.post._id, 'discussions'])
-  	})
+  saveNewReply(id, replyData) {
+  	this.postService.addDiscussionOnPost(id, this.replyData)
+  	const replyInfo = replyData.form.controls;
+  	this.updatedPostDiscussion = replyData.discussion.value;
+  	this.sendUpdatesToApi(id)
   }
 
+  sendUpdatesToApi(id) {
+  	this.updatedPost = {discussion: this.updatedPostDiscussion}
 
-
+  	this.postService.addDiscussionOnPost(id, this.updatedPost)
+  		.toPromise()
+  		.then(res => {
+  			this.myRouter.navigate(['/forums', this.post._id, 'discussions'])
+  		})
+  		.catch(err => {
+  			console.log("Error adding the discussion to this post ", err);
+  		})
+  }
 
 
 }
