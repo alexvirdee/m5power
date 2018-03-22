@@ -25,7 +25,7 @@ export class VideosComponent implements OnInit {
 
   ngOnInit() {
     this.init();
-    this.video = '1cH2cerUpMQ' //video id
+    this.video = 'vbRqe6E_YJ8' //video id
 
     window['onYouTubeIframeAPIReady'] = (e) => {
       this.YT = window['YT'];
@@ -70,6 +70,7 @@ export class VideosComponent implements OnInit {
   cleanTime() {
     return Math.round(this.player.getCurrentTime())
   };
+
   onPlayerError(event) {
     switch (event.data) {
       case 2:
@@ -81,5 +82,6 @@ export class VideosComponent implements OnInit {
         break;
     };
   };
+
 }
 

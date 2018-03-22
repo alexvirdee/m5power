@@ -1,1 +1,8 @@
-.max-width-1024 { max-width: 1024px; margin: 0 auto; }
+.video-player { 
+	max-width: 800px; 
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
