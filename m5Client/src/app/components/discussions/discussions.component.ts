@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { McarsService } from "../../services/mcars.service";
 import { PostService } from "../../services/post.service";
 import { AuthService } from "../../services/auth.service";
+import { FileUploader } from 'ng2-file-upload';
 import { environment } from "../../../environments/environment";
+
 
 import 'rxjs/add/operator/toPromise';
 
@@ -79,16 +81,21 @@ replyUploader = new FileUploader({
   		.catch()
   }
 
-  saveNewReply(id) {
-  	if (this.replyUploader.getNotUploadedItems().length === 0) {
-		this.saveReplyNoImage(id);
-	} else {
-		this.saveReplyWithImage(id);
-		}
-  }
+ //  saveNewReply(id) {
+ //  	if (this.replyUploader.getNotUploadedItems().length === 0) {
+	// 	this.saveReplyNoImage(id);
+	// } else {
+	// 	this.saveReplyWithImage(id);
+	// 	}
+ //  }
 
+ //  private saveReplyNoImage(id) {
+ //  	this.postService.
+ //  }
 
+ //  private saveReplyWithImage(id) {
 
+ //  }
 
 
 }
