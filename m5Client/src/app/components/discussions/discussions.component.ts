@@ -50,8 +50,7 @@ export class DiscussionsComponent implements OnInit {
     this.mcarService.getId(id)
       .then( res => {
         this.mcar = res;
-        this.mcarPosts = this.mcar.posts;
-        console.log("McarDetails details posts ", this.mcarPosts);
+        console.log("This is the response: " + res);
       })
       .catch()
   }
