@@ -13,6 +13,7 @@ import 'rxjs/add/operator/toPromise';
   styleUrls: ['./discussions.component.css']
 })
 export class DiscussionsComponent implements OnInit {
+ post = <any>{};
  mcar = <any>{};
  currentUser: string;
  baseUrl = environment.apiBase;
@@ -41,7 +42,9 @@ export class DiscussionsComponent implements OnInit {
     this.myRoute.params.subscribe(params => {
       this.getCarDetails(params["id"]);
     });
-    // this.getCarPosts(carId)
+     this.myRoute.params.subscribe(params => {
+      this.getPostDetails(params["id"]);
+    });
   }
 
 
@@ -56,11 +59,11 @@ export class DiscussionsComponent implements OnInit {
   }
 
   // get post and its details
-  getPhoneDetails(id) {
-  	this.myPhoneService.getId(id)
+  getPostDetails(id) {
+  	this.postService.getId(id)
   		.then( res => {
-  			this.phone = res;
-  			console.log("Phone details ", this.phone);
+  			this.post = res;
+  			console.log("Here are the post details: ", this.post);
   		})
   		.catch()
   }
