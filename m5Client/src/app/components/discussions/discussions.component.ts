@@ -77,34 +77,24 @@ updatedPost: any = {};
   	this.postService.getId(id)
   		.then( res => {
   			this.post = res;
+  			console.dir(this.post)
   			this.replies = this.post.discussion;
   			console.log("Here are the post details: ", this.post);
   		})
   		.catch()
   }
 
-  // saveNewReply(id, replyData) {
-  // 	this.postService.addDiscussionOnPost(id, this.replyData)
-  	
-  // 	this.sendUpdatesToApi(id)
-  // }
 
   sendUpdatesToApi(id) {
-  	// console.log("==================");
-  	// console.log(id);
-  	// console.log("==================");
-  	// console.log(this.replyData);
-  	// console.log("==================");
-  	// console.log("sending data to api");
-  	// this.updatedPost = {discussion: this.updatedPostDiscussion}
-  	// this.postService.addDiscussionOnPost(id, this.replyData)
-  	// 	.toPromise()
-  	// 	.then(res => {
-  	// 		this.myRouter.navigate(['/forums', this.post._id, 'discussions'])
-  	// 	})
-  	// 	.catch(err => {
-  	// 		console.log("Error adding the discussion to this post ", err);
-  	// 	})
+  	this.updatedPost = {discussion: this.updatedPostDiscussion}
+  	this.postService.addDiscussionOnPost(id, this.replyData, this.post._id)
+  		.toPromise()
+  		.then(res => {
+  			this.myRouter.navigate(['/forums', this.post._id, 'discussions'])
+  		})
+  		.catch(err => {
+  			console.log("Error adding the discussion to this post ", err);
+  		})
   }
 
 
