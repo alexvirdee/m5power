@@ -13,14 +13,21 @@ import 'rxjs/add/operator/toPromise';
   styleUrls: ['./discussions.component.css']
 })
 export class DiscussionsComponent implements OnInit {
+ 
+  replyData = {
+ 	content: ""
+ }
+
  post = <any>{};
  mcar = <any>{};
  currentUser: string;
  baseUrl = environment.apiBase;
 
- replyData = {
- 	content: ""
- }
+replyUploader = new FileUploader({
+	url: environment.apiBase + "/api/mcars/:id/post/new",
+	itemAlias: "postPhoto"
+})
+
 
   constructor(private myAuthService: AuthService, 
               private myRoute: ActivatedRoute, 
@@ -70,6 +77,14 @@ export class DiscussionsComponent implements OnInit {
   			console.log("Here are the post details: ", this.post);
   		})
   		.catch()
+  }
+
+  saveNewReply(id) {
+  	if (this.replyUploader.getNotUploadedItems().length === 0) {
+		this.saveReplyNoImage(id);
+	} else {
+		this.saveReplyWithImage(id);
+		}
   }
 
 

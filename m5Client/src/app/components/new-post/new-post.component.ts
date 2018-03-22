@@ -58,6 +58,8 @@ export class NewPostComponent implements OnInit {
 	      })
 	      .catch()
 	  }
+
+    
   saveNewPost(id) {
 	if (this.postUploader.getNotUploadedItems().length === 0) {
 		this.savePostNoImage(id);
