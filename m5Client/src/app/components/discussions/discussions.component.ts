@@ -82,7 +82,7 @@ updatedPost: Object = {};
   saveNewReply(id, replyData) {
   	this.postService.addDiscussionOnPost(id, this.replyData)
   	const replyInfo = replyData.form.controls;
-  	this.updatedPostDiscussion = replyData.content.value;
+  	this.updatedPostDiscussion = replyInfo.content.value;
   	this.sendUpdatesToApi(id)
   }
 
