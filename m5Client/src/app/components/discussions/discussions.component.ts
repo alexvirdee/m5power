@@ -84,6 +84,10 @@ updatedPost: any = {};
   }
 
 
+
+  
+
+
   sendUpdatesToApi(id) {
   	this.updatedPost = {discussion: this.updatedPostDiscussion}
   	this.postService.addDiscussionOnPost(id, this.replyData, this.post._id)
