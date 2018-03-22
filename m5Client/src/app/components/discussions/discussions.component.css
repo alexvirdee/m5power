@@ -6,24 +6,20 @@ span {
 	margin-top: 10px;
 }
 
-.postings {
-	display: flex;
-}
 
-.row {
-	width: 100%;
-	margin-left: 20px;
-}
 
-.card-content {
+.postings-content {
 	color: #fff;
 }
 
+.replies-form {
+	margin-left: 10px;
+}
 
 
 textarea {
 	height: 200px;
-	width: 400px;
+	width: 450px;
 	margin: 10px 10px 10px 0;
 }
 

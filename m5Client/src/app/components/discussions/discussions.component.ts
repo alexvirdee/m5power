@@ -18,6 +18,10 @@ export class DiscussionsComponent implements OnInit {
  currentUser: string;
  baseUrl = environment.apiBase;
 
+ replyData = {
+ 	content: ""
+ }
+
   constructor(private myAuthService: AuthService, 
               private myRoute: ActivatedRoute, 
               private myRouter: Router, 
