@@ -90,35 +90,35 @@ mcarRoutes.get('/api/mcars/:id', (req, res, next) => {
 })
 
 // update the M Car
-mcarRoutes.put('/api/mcars/:id', (req, res, next) => {
-    if (!req.user) {
-      res.status(401).json({ message: "Log in to update the car." });
-      return;
-    }
-    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-        res.status(400).json({ message: "That ID is not valid" });
-        return; 
-    }
+// mcarRoutes.put('/api/mcars/:id', (req, res, next) => {
+//     if (!req.user) {
+//       res.status(401).json({ message: "Log in to update the car." });
+//       return;
+//     }
+//     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+//         res.status(400).json({ message: "That ID is not valid" });
+//         return; 
+//     }
 
-    const updates = {
-        modelM: req.body.modelM,
-        year: req.body.year,
-        posts: req.body.posts,
-        specs: req.body.specs,
-        image: req.body.image,   
-    };
+//     const updates = {
+//         modelM: req.body.modelM,
+//         year: req.body.year,
+//         posts: req.body.posts,
+//         specs: req.body.specs,
+//         image: req.body.image,   
+//     };
 
-  MCar.findByIdAndUpdate(req.params.id, updates, err => {
-    if (err) {
-      res.json(err);
-      return;
-    }
+//   MCar.findByIdAndUpdate(req.params.id, updates, err => {
+//     if (err) {
+//       res.json(err);
+//       return;
+//     }
 
-    res.json({
-      message: "BMW M Model has been updated successfully."
-    });
-  });
-});
+//     res.json({
+//       message: "BMW M Model has been updated successfully."
+//     });
+//   });
+// });
 
 
 

@@ -13,6 +13,54 @@ const postUploader = multer({
 	dest: __dirname + '/../public/uploads/'
 });
 
+
+
+// update a post that a user makes 
+postRoutes.put('/api/mcars/:id/post/:postId/edit', (req, res, next) => {
+    const postId = req.params.postId;
+console.log(" =================== post id: ", postId)
+     if (!req.user) {
+      res.status(401).json({ message: "Login to update your post" });
+      return;
+    }
+     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+        res.status(400).json({ message: "Specified id is not valid" });
+        return;
+    }
+ 
+    
+  Post.findById(postId, function (err, thePost) {
+    console.log("the post is: ", thePost)
+
+    // console.log("req user:=====" , req.user._id)
+    // console.log("req body discuss:=====" , req.body.content)
+    
+    var theUpdate = {_author: req.user._id , content: req.body.content  }
+
+    // console.log("This is the update: ", theUpdate);
+
+
+      thePost.discussion.push(theUpdate);
+      // console.log("this is the post", thePost);
+      thePost.save(function (err) { 
+    // console.log("this is the post", thePost);
+
+        if (err) {
+            console.log("err: ", err)
+            // res.json(err);
+            return;
+        }
+
+        res.json({
+            message: "Your post has been updated successfully"
+        });
+
+   })
+})
+
+});
+
+
 // create a new post for specific M car 
 postRoutes.post('/api/mcars/:id/post/new', postUploader.single('postPhoto'), (req, res, next) => {
 	const mcarId = req.params.id;
@@ -107,35 +155,7 @@ postRoutes.get('/api/mcars/:id/post', (req, res, next) => {
   });
 });
 
-// update a post that a user makes 
-postRoutes.put('/api/mcars/:id/post/edit', (req, res, next) => {
-     if (!req.user) {
-      res.status(401).json({ message: "Login to update your post" });
-      return;
-    }
-     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-        res.status(400).json({ message: "Specified id is not valid" });
-        return;
-    }
-    const updates = {
-        title: req.body.mcarTitle,
-        text: req.body.mcarText,
-        createdAt: Date.now(),
-        image: req.body.image,
-        discussion: [Discussion] 
-    };
 
-    Post.findByIdAndUpdate(req.params.id, updates, err=> {
-        if (err) {
-            res.json(err);
-            return;
-        }
-
-        res.json({
-            message: "Your post has been updated successfully"
-        });
-    });
-});
 
 // No posts should be deleted but making a route just in case 
 postRoutes.delete('/api/mcars/:id', (req, res, next) => {
