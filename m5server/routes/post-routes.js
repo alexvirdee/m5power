@@ -121,7 +121,8 @@ postRoutes.put('/api/mcars/:id/post/edit', (req, res, next) => {
         title: req.body.mcarTitle,
         text: req.body.mcarText,
         createdAt: Date.now(),
-        image: req.body.image 
+        image: req.body.image,
+        discussion: [Discussion] 
     };
 
     Post.findByIdAndUpdate(req.params.id, updates, err=> {
