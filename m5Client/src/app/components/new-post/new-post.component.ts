@@ -59,7 +59,7 @@ export class NewPostComponent implements OnInit {
 	      .catch()
 	  }
 
-    
+
   saveNewPost(id) {
 	if (this.postUploader.getNotUploadedItems().length === 0) {
 		this.savePostNoImage(id);
@@ -71,7 +71,7 @@ export class NewPostComponent implements OnInit {
 	private savePostNoImage(id) {
   	this.postService.createNewPost(id, this.postData)
   	.then( res =>  {
-  		console.log("this is data from form:", res)
+  		console.log("this is data from form:", + res)
   		this.postData = {
   			title: "",
   			text: ""

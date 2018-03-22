@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { McarsService } from "../../services/mcars.service";
 import { PostService } from "../../services/post.service";
 import { AuthService } from "../../services/auth.service";
-import { FileUploader } from 'ng2-file-upload';
 import { environment } from "../../../environments/environment";
 
 
@@ -23,12 +22,10 @@ export class DiscussionsComponent implements OnInit {
  post = <any>{};
  mcar = <any>{};
  currentUser: string;
+ savingErr: string
  baseUrl = environment.apiBase;
 
-replyUploader = new FileUploader({
-	url: environment.apiBase + "/api/mcars/:id/post/new",
-	itemAlias: "postPhoto"
-})
+
 
 
   constructor(private myAuthService: AuthService, 
@@ -81,21 +78,20 @@ replyUploader = new FileUploader({
   		.catch()
   }
 
- //  saveNewReply(id) {
- //  	if (this.replyUploader.getNotUploadedItems().length === 0) {
-	// 	this.saveReplyNoImage(id);
-	// } else {
-	// 	this.saveReplyWithImage(id);
-	// 	}
- //  }
+  saveNewReply(id) {
+  	this.postService.addToDiscussion(id, this.replyData)
+  	.then(res => {
+  		console.log("this is the data from the reply form content: " + res)
+  		this.replyData = {
+  			content: ""
+  		}
+  		this.savingErr = "";
+  		this.myRouter.navigate(['/forums', this.post._id, 'discussions'])
+  	})
+  }
 
- //  private saveReplyNoImage(id) {
- //  	this.postService.
- //  }
 
- //  private saveReplyWithImage(id) {
 
- //  }
 
 
 }
