@@ -7,5 +7,6 @@ M5Power is a BMW M series forums based full stack application. The app is built 
 M5Power authentication is built from the ground up with PassportJS on the express side of the app. There is also successful error handling for data that conflicts such as if a username is already taken. There is also encryption with Bcrypt to keep users passwords safe with gen salt hashing incorporated. 
 
 ### The App
+
 ![App image](/public/images/mcars-search.png)
 
