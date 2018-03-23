@@ -8,5 +8,5 @@ M5Power authentication is built from the ground up with PassportJS on the expres
 
 ### The App
 
-![App image](public/images/mcars-search.png)
+![mcar](./public/images/mcars-search.png)
 
