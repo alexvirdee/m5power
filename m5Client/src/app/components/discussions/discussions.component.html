@@ -29,7 +29,7 @@
 		      <p>Reply to posting:</p>
 		      <textarea id="replies-text" placeholder="input content here" cols="50" rows="20" [(ngModel)]="replyData.content" name="content"></textarea>
 		      <br>
-		      <button class="btn waves-effect waves-light" type="submit">Submit
+		      <button (click)="refresh()" class="btn waves-effect waves-light" type="submit">Submit
 		        <i class="material-icons right">send</i>
 		      </button>
 		    </form>

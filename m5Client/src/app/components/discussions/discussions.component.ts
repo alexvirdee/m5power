@@ -17,6 +17,10 @@ import { FilterPipe } from '../../pipes/filter.pipe';
   styleUrls: ['./discussions.component.css']
 })
 export class DiscussionsComponent implements OnInit {
+
+   refresh(): void {
+    window.location.reload();
+}
  
   replyData = {
  	content: ""
@@ -97,12 +101,14 @@ updatedPost: any = {};
   		.toPromise()
   		.then(res => {
   			console.log("response: ", res)
-  			this.myRouter.navigate(['/forums', this.mcar._id, 'discussions', this.post._id ])
+  			// this.myRouter.navigate(['/forums', this.mcar._id, 'discussions', this.post._id ])
   		})
   		.catch(err => {
   			console.log("Error adding the discussion to this post ", err);
   		})
   }
+
+
 
 
 }
