@@ -29,6 +29,7 @@ export class DiscussionsComponent implements OnInit {
  savingErr: string
  baseUrl = environment.apiBase;
  replies: any;
+ pattern: string;
 
 
 updatedPostDiscussion: String;
@@ -89,17 +90,14 @@ updatedPost: any = {};
 
 
 
-
-
-
   sendUpdatesToApi(id) {
   	this.updatedPost = {discussion: this.updatedPostDiscussion}
   	this.postService.addDiscussionOnPost(id, this.post._id, this.replyData)
   	// console.log("+++++++++", this.post._id)
   		.toPromise()
   		.then(res => {
-  			console.log("resssssssss: ", res)
-  			// this.myRouter.navigate(['/forums', this.mcar._id, 'discussions', this.post._id ])
+  			console.log("response: ", res)
+  			this.myRouter.navigate(['/forums', this.mcar._id, 'discussions', this.post._id ])
   		})
   		.catch(err => {
   			console.log("Error adding the discussion to this post ", err);
