@@ -3,37 +3,45 @@
 
 
 
+<div class="parent-container">
+
+	<div class="first-child">
+		
+
+		<div class="postings">
+		  <div class="row postings-row">
+		    <div class="col s12 m6">
+		      <div style="background-color:#003d6c;" class="card z-depth-4">
+		        <div class="card-content postings-content">
+		          <img class="nav-logo" src="../../assets/images/M5Power.png" alt="logo">
+		          <span><h5>{{post.title}}</h5></span>
+		          <span>{{post.image}}</span>
+		          <span>{{post.text}}</span> 
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 
 
-
-<div class="postings">
-  <div class="row postings-row">
-    <div class="col s12 m6">
-      <div style="background-color:#003d6c;" class="card z-depth-4">
-        <div class="card-content postings-content">
-          <img class="nav-logo" src="../../assets/images/M5Power.png" alt="logo">
-          <span><h5>{{post.title}}</h5></span>
-          <span>{{post.image}}</span>
-          <span>{{post.text}}</span> 
-        </div>
-      </div>
-    </div>
-  </div>
+		<div class="replies-form">
+		    <form (ngSubmit)="sendUpdatesToApi(post._id)" #myForm="ngForm">
+		      <p>Reply to posting:</p>
+		      <textarea id="replies-text" placeholder="input content here" cols="50" rows="20" [(ngModel)]="replyData.content" name="content"></textarea>
+		      <br>
+		      <button class="btn waves-effect waves-light" type="submit">Submit
+		        <i class="material-icons right">send</i>
+		      </button>
+		    </form>
+	  	</div>
 
 
-	<div class="replies-form">
-    <form (ngSubmit)="sendUpdatesToApi(post._id)" #myForm="ngForm">
-      <p>Reply to posting:</p>
-      <textarea id="replies-text" placeholder="input content here" cols="50" rows="20" [(ngModel)]="replyData.content" name="content"></textarea>
-      <br>
-      <button class="btn waves-effect waves-light" type="submit">Submit
-        <i class="material-icons right">send</i>
-      </button>
-    </form>
-  </div>
+	</div>
 
-<div class="replies" *ngFor="let discuss of post.discussion | filter:'content':pattern; let i = index">
-	<div class="row">
+	<div class="second-child">
+
+		<div class="replies" *ngFor="let discuss of post.discussion | filter:'content':pattern; let i = index">
+		<div class="row">
 		<div class="col s12 m6">
 			<div class="card z-depth-4">
 				<div class="card-content">
@@ -42,7 +50,16 @@
 				</div>
 			</div>
 		</div>
+  		</div>
+		
 	</div>
+</div>
+
+
+
+
+
+
 
  
 
