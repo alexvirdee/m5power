@@ -65,12 +65,13 @@ postRoutes.put('/api/mcars/:id/post/:postId/edit', (req, res, next) => {
 // create a new post for specific M car 
 postRoutes.post('/api/mcars/:id/post/new', postUploader.single('postPhoto'), (req, res, next) => {
 	const mcarId = req.params.id;
+    console.log("id for car is: ", mcarId)
     if (!req.user) {
 		res.status(401).json({ message: "Login to create a new post"});
 		return;
 	}
     MCar.findById(mcarId, (err, foundCar) => {
-
+        console.log("try1")
         if(err){
             console.log(err);
             return;
@@ -83,7 +84,7 @@ postRoutes.post('/api/mcars/:id/post/new', postUploader.single('postPhoto'), (re
         mcar: mcarId
         // discussions: Schema.ObjectId
     });
-        
+        console.log("file is: ", req.file)
     if(req.file){
             newPost.image = '/uploads/' + req.file.filename;
         }
