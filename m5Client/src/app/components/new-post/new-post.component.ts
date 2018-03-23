@@ -18,8 +18,11 @@ export class NewPostComponent implements OnInit {
   	text: ""
   }
   mcar = <any>{};
-  savingErr: string
+  savingErr: string;
   userInSess = <any>{};
+
+
+  uploaded: boolean = false;
 
   postUploader = new FileUploader({
     url: environment.apiBase + "/api/mcars/:id/post/new",
@@ -96,10 +99,11 @@ export class NewPostComponent implements OnInit {
   		  text: ""
         };
         this.savingErr = ""
+        this.uploaded = true;
         this.myRouter.navigate(['/forums', this.mcar._id]);
     }
         this.postUploader.onErrorItem = (item, response) => {
-        this.savingErr = "Saving the post with image went bad. Sorry!";
+        this.savingErr = "Saving the post with image went bad. Sorry! 😤";
     }
         this.postUploader.uploadAll();
   }

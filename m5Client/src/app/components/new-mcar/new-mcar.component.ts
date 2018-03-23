@@ -81,7 +81,7 @@ export class NewMcarComponent implements OnInit {
         this.myRouter.navigate(["/search"]);
     }
     this.mcarUploader.onErrorItem = (item, response) => {
-      this.savingErr = "Saving the post with image went bad. Sorry!";
+      this.savingErr = "Saving the car with image went bad. Sorry!";
     }
     this.mcarUploader.uploadAll();
   }
