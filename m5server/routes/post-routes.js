@@ -128,7 +128,7 @@ postRoutes.get('/api/mcars/:id/posts', (req, res, next) => {
     .populate('user', { encryptedPassword: 0 })
       .exec((err, allThePosts) => {
         if (err) {
-          res.status(500).json({ message: "Phones find went bad." });
+          res.status(500).json({ message: "Posts find went bad." });
           return;
         }
         res.status(200).json(allThePosts);
