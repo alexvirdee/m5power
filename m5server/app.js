@@ -18,10 +18,11 @@ var io = require('socket.io')(http);
 
 require('./configs/passport-config');
 
-// mongoose.connect('mongodb://localhost/M5power');
+// local connection
+mongoose.connect('mongodb://localhost/M5power');
 
 // deploy connection
-mongoose.connect(process.env.MONGODB_URI);
+// mongoose.connect(process.env.MONGODB_URI);
 
 var app = express();
 
@@ -49,7 +50,7 @@ app.use(passport.session());
 app.use(
   cors({
     credentials: true,                 // allow other domains to send cookies
-    origin: ["http://localhost:4200"]  // these are the domains that are allowed
+    origin: ["http://localhost:4200", "http://localhost:8888"]  // these are the domains that are allowed
   })
 );
 
