@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { MaterializeModule } from "angular2-materialize";
 
@@ -67,11 +67,11 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     MaterializeModule,
     FileUploadModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })
   ],
   providers: [AuthService, RouterGuardService, McarsService, PostService],
   bootstrap: [AppComponent]
