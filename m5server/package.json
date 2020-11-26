@@ -8,7 +8,7 @@
     "restart": "rm -rf node_modules && npm install"
   },
   "dependencies": {
-    "bcrypt": "~2.0.0",
+    "bcrypt": "~5.0.0",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
