@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
 
-  constructor( private myHttp:Http ) { }
+  constructor( private myHttp: HttpClient ) { }
 
   signup(componentInfo) {
   	return this.myHttp.post(`${environment.apiBase}/auth/signup`,

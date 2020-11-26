@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class McarsService {
 
-  constructor( private mcarsHttp: Http ) { }
+  constructor( private mcarsHttp: HttpClient ) { }
 
    getAllCars(){
     return this.mcarsHttp.get(`${environment.apiBase}/api/mcars`,
@@ -15,11 +15,11 @@ export class McarsService {
   }
 
   createNewCar(dataToSend) {
-  	return this.mcarsHttp.post(`${environment.apiBase}/api/mcars/new`, 
-  		dataToSend, 
-  		{ withCredentials: true})
-  	.toPromise()
-  	.then(res => res.json());
+      return this.mcarsHttp.post(`${environment.apiBase}/api/mcars/new`, 
+        dataToSend, 
+        { withCredentials: true})
+      .toPromise()
+      .then(res => res.json());
   }
 
   getId(id){
